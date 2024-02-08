@@ -1,3 +1,212 @@
-*{
-    background-color: red;
+/* Font Family Persian */
+
+
+@font-face {
+    font-family: 'iranSans';
+    src: url('../fonts/IRANSans.ttf');
+}
+
+
+
+.Fvazir , body {
+    font-family: 'iranSans';
+}
+
+.FSarbaz {
+    font-family: Sarbaz;
+}
+
+
+/* sm size */
+@media (min-width:0px) {
+    .font-sm-1 {
+        font-size: 0.7rem;
+    }
+
+    .font-sm-2 {
+        font-size: 0.8rem;
+    }
+
+    .font-sm-3 {
+        font-size: 0.9rem;
+    }
+
+    .font-sm-4 {
+        font-size: 1rem;
+    }
+
+    .font-sm-5 {
+        font-size: 1.1rem;
+    }
+
+    .font-sm-6 {
+        font-size: 1.2rem;
+    }
+
+    .font-sm-7 {
+        font-size: 1.3rem;
+    }
+
+    .font-sm-8 {
+        font-size: 1.4rem;
+    }
+
+    .font-sm-9 {
+        font-size: 1.5rem;
+    }
+}
+
+/* md size */
+@media (min-width:768px) {
+    .font-md-1 {
+        font-size: 0.7rem;
+    }
+
+    .font-md-2 {
+        font-size: 0.8rem;
+    }
+
+    .font-md-3 {
+        font-size: 0.9rem;
+    }
+
+    .font-md-4 {
+        font-size: 1rem;
+    }
+
+    .font-md-5 {
+        font-size: 1.1rem;
+    }
+
+    .font-md-6 {
+        font-size: 1.2rem;
+    }
+
+    .font-md-7 {
+        font-size: 1.3rem;
+    }
+
+    .font-md-8 {
+        font-size: 1.4rem;
+    }
+
+    .font-md-9 {
+        font-size: 1.5rem;
+    }
+}
+
+/* lg size */
+@media (min-width:992px) {
+    .font-lg-1 {
+        font-size: 0.7rem;
+    }
+
+    .font-lg-2 {
+        font-size: 0.8rem;
+    }
+
+    .font-lg-3 {
+        font-size: 0.9rem;
+    }
+
+    .font-lg-4 {
+        font-size: 1rem;
+    }
+
+    .font-lg-5 {
+        font-size: 1.1rem;
+    }
+
+    .font-lg-6 {
+        font-size: 1.2rem;
+    }
+
+    .font-lg-7 {
+        font-size: 1.3rem;
+    }
+
+    .font-lg-8 {
+        font-size: 1.4rem;
+    }
+
+    .font-lg-9 {
+        font-size: 1.5rem;
+    }
+}
+
+/* ex size */
+@media (min-width:1200px) {
+    .font-ex-1 {
+        font-size: 0.7rem;
+    }
+
+    .font-ex-2 {
+        font-size: 0.8rem;
+    }
+
+    .font-ex-3 {
+        font-size: 0.9rem;
+    }
+
+    .font-ex-4 {
+        font-size: 1rem;
+    }
+
+    .font-ex-5 {
+        font-size: 1.1rem;
+    }
+
+    .font-ex-6 {
+        font-size: 1.2rem;
+    }
+
+    .font-ex-7 {
+        font-size: 1.3rem;
+    }
+
+    .font-ex-8 {
+        font-size: 1.4rem;
+    }
+
+    .font-ex-9 {
+        font-size: 1.5rem;
+    }
+}
+
+// old vertion 
+.font1 {
+    font-size: 0.7rem !important;
+}
+
+.font2 {
+    font-size: 0.8rem !important;
+}
+
+.font3 {
+    font-size: 0.9rem !important;
+}
+
+.font4 {
+    font-size: 1rem !important;
+}
+
+.font5 {
+    font-size: 1.1rem;
+}
+
+.font6 {
+    font-size: 1.2rem;
+}
+
+.font7 {
+    font-size: 1.3rem;
+}
+
+.font8 {
+    font-size: 1.4rem;
+
+}
+
+.font9 {
+    font-size: 1.5rem;
 }

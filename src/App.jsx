@@ -4,8 +4,8 @@ function App() {
 
 
   return (
-    <div className=''>
-  مخقثئ
+    <div className='PanelCenter'>
+      سلام اسم من ابوالفضل است
     </div>
   )
 }

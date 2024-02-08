@@ -1,1 +1,259 @@
+@import "./vars";
 @import "./fonts";
+@import "./animation";
+@import "./layout/table.scss";
+@import "./layout/buttons";
+@import "./layout/panels";
+
+
+* {
+    direction: rtl;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+#Tizhoo_Ui {
+    height: 100vh;
+}
+
+*:focus,
+*:active,
+*:blur {
+    outline: none !important;
+}
+
+a {
+    // all: unset;
+    color: #272727 !important;
+}
+
+button:focus {
+    border: none !important;
+    outline: none !important;
+}
+
+button,
+button:active,
+button:visited {
+    border: none !important;
+    outline: none !important;
+}
+
+/* scrolls  */
+*::-webkit-scrollbar {
+    background-color: #fff;
+    width: 16px;
+    border: 4px solid #fff;
+}
+
+*::-webkit-scrollbar {
+    width: 16px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #babac0;
+    border-radius: 16px;
+    border: 5px solid #fff;
+    width: 2px !important;
+}
+
+.no-scroll::-webkit-scrollbar {
+    visibility: hidden;
+}
+
+.noSelect::-webkit-scrollbar-thumb {
+    background-color: #babac0;
+    border-radius: 16px;
+    border: .1px solid #babac0;
+    width: 1px !important;
+}
+
+
+
+.w-md-auto {
+    width: auto !important;
+}
+
+.btn-dark {
+    background: $color-dark;
+}
+
+
+
+/* box style  */
+.d-flex-center-All {
+    display: flex;
+    justify-content: center;
+    align-items: center !important;
+    height: 100%;
+}
+
+.d-flex-beatwean {
+    display: flex;
+    justify-content: space-between;
+}
+
+.d-flex-around {
+    display: flex;
+    justify-content: space-around;
+}
+
+.d-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center !important;
+
+}
+
+
+/* image style  */
+.img-respansive {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+}
+
+.img-center {
+    height: auto;
+    width: 40%;
+}
+
+@media screen and (max-width:540px) {
+    .img-center {
+        width: 60%;
+    }
+}
+
+
+/* text graphy  */
+.bold {
+    font-weight: bolder;
+}
+
+.noSelect {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.cl-gray {
+    color: #87868a;
+}
+
+.ct {
+    color:  $green-light;
+}
+
+.ct-green-dark {
+    color: $green-dark;
+}
+
+/* events mouse */
+.pointer {
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* icons  */
+.IconSet span {
+    padding-right: 5px;
+}
+
+.IconSet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* animation sets */
+.Effect:active {
+    animation-name: bounceIn;
+    animation-duration: 2s;
+
+}
+
+.effect {
+    animation-name: bounceOut;
+    animation-duration: 2s;
+}
+
+.unload {
+    /* animation-name: bounceOut;
+    animation-duration: 2s; */
+}
+
+
+.badge1 {
+    display: inline-block;
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+
+.bg-dash2 {
+    background: $color-dark;
+}
+
+
+
+.mr-2 {
+    margin-right: .4rem;
+}
+
+.mr-auto {
+    margin-right: auto;
+}
+
+.btn-global {
+    background-color: $sormei !important;
+    color: #fff !important;
+}
+
+.ltr * {
+    direction: ltr !important;
+}
+
+.rtl * {
+    direction: rtl !important;
+}
+
+
+
+.border-bottom-0-0 {
+    border-bottom: 0px !important;
+}
+
+.bg-sormei {
+    background: $sormei;
+}
+
+.BoxTiels {
+    color: #fff !important;
+}
+
+.hr {
+    height: 1px;
+    background-color: #ccc;
+    border: none;
+}
+
+
+.centerAll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media (max-width:576px) {
+    .w-md-auto {
+        width: 100% !important;
+    }
+}
+

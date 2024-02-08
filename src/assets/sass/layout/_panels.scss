@@ -1,0 +1,238 @@
+/**  Asaide compnent  */
+
+/*? header titr  */
+@media screen and (min-width:768px) {
+    .header-aside-lg,
+    .header-aside-lg h1 {
+        background-color: $side-titr;
+        width: 120%;
+        padding: 4px 15px;
+        display: flex;
+        justify-content: center;
+        color: #e4e6e8;
+    }
+
+    .header-aside-lg {
+        margin-top: -10px;
+    }
+}
+
+@media screen and (max-width:768px) {
+
+    .header-aside-lg h1 {
+        color: #e4e6e8;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.titr-asiade-header {
+    color: #04b19d;
+    margin: 0 5px;
+}
+
+.GigaMenuFother {
+    position: fixed;
+    z-index: 998 !important;
+    width: 0;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.378);
+}
+
+.PanelCenter {
+    background-color: $sidebar;
+    width: 100%;
+    height: 100% !important;
+    padding: 0;
+    margin: 0;
+}
+
+.CenterBox {
+    /* display: flex; */
+    /* align-items: center; */
+    height: 100vh;
+    /* justify-content: center; */
+}
+
+.RightGigiMenu,
+.panelMobilTopNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row !important;
+    align-content: center;
+    padding-top: 10px;
+    padding-bottom: 20px;
+
+}
+
+.panelMobilTopNav {
+    height: auto;
+    padding: 20px;
+    background-color: $side-titr;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+}
+
+.gigamenu {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 85vh;
+}
+
+.gigamenu::-webkit-scrollbar {
+    background-color: transparent !important;
+    width: 16px;
+    border: 4px solid transparent !important;
+}
+
+.RightGigiMenu {
+    height: 100%;
+
+    flex-direction: column !important;
+
+}
+
+.sizeBtn {
+    width: 75%;
+}
+
+@media screen and (max-width:768px) {
+    body {
+        background: #F3F1EF !important;
+    }
+
+    .CenterBox {
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block;
+        height: auto;
+
+
+    }
+
+    .PanelCenter {
+        height: auto !important;
+    }
+
+    .gigamenu {
+        background: #ffffff;
+        position: fixed;
+        height: 100%;
+        top: 0;
+        left: 0;
+        width: 0 !important;
+        z-index: 999 !important;
+        padding: 0 !important;
+        transition: 0.5s;
+    }
+
+    .mainContent {
+        border-radius: 0px !important;
+        height: auto !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+    }
+
+    .sizeBtn {
+        width: 50%;
+    }
+
+    .h-sm-auto {
+        height: auto;
+    }
+
+    .RightGigiMenu {
+        height: 100%;
+    }
+}
+
+.RightGigiMenu::-webkit-scrollbar,
+.mainContent::-webkit-scrollbar {
+    background-color: transparent !important;
+    width: 16px;
+    border: 4px solid transparent !important;
+}
+
+div .span-head {
+    color: #ECD444;
+}
+
+.mainContent {
+    background: #F3F1EF;
+    border-radius: 4px;
+    height: 100% !important;
+}
+
+.mainContent::-webkit-scrollbar-thumb {
+    background-color: #babac0;
+    border-radius: 16px;
+    border: 5px solid #F3F1EF;
+    width: 2px !important;
+}
+
+.AvatarFix {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.btnRightNav {
+    width: 95% !important;
+    margin: 5px 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.overFlowNone {
+    overflow: hidden;
+}
+
+.width-100 {
+    width: 100% !important;
+    height: 100vh !important;
+}
+
+/* tiels  */
+
+.BoxTiels {
+    margin-top: 20px;
+    padding: 15px;
+    height: auto;
+}
+
+.event.BoxTiels {
+    margin-top: 10px;
+    padding: 10px;
+    padding-top: 0;
+    height: auto;
+    background: #0F1322;
+}
+
+.tile {
+    padding: 0.25rem;
+    background-color: #FFFFFF;
+    border-radius: 0.25rem;
+    margin-top: 0.75rem;
+    margin-left: 0.25rem;
+    cursor: pointer;
+}
+
+
+.setInp {
+    border: 0;
+    border-radius: 0;
+    margin-left: -5px;
+    background: $color-dark !important;
+    color: white !important;
+}
+
+.left-radius {
+    border-radius: 3px 0px 0px 3px !important;
+}
+

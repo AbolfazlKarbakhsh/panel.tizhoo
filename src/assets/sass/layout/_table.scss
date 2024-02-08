@@ -1,0 +1,31 @@
+/* table  */
+.table-fixed {
+    table-layout: auto;
+}
+
+.thead-dark {
+    background: #edecec !important;
+    color: #000000 !important;
+    border: 0px !important;
+}
+
+.thead-dark * {
+    font-weight: 100 !important;
+    border: 0px !important;
+
+}
+
+.body-tabel {
+    font-size: .9rem;
+}
+
+
+@media (max-width:567px) {
+    .table-width-mobile {
+        width: 650px !important;
+    }
+}
+
+.body-tabel tr td {
+    cursor: pointer;
+}

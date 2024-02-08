@@ -1,0 +1,52 @@
+.activeBtn3:active,
+.activeBtn2:active,
+.activeBtn:active {
+    transition: all .5s;
+
+}
+
+.activeBtn3 , .activeBtn2   {
+    span{
+        color: #fff !important;
+    }
+}
+.activeBtn2 , .activeBtn3 {
+    background: #00695C !important;
+    transition: all .5s;
+}
+.activeBtn2 {
+    color: #fff !important;
+}
+
+.btnRightNav {
+    width: 90%;
+    transition: all .5s;
+}
+
+
+.btn:active {
+    outline: none !important;
+    border: none !important;
+}
+
+.btn:focus {
+    outline: none !important;
+    border: none !important;
+}
+
+.btn:visited {
+    outline: none !important;
+    border: none !important;
+}
+
+.btn {
+    outline: none !important;
+    border: none !important;
+    padding: 8px;
+}
+
+.activeBtn {
+    background: #F3F1EF !important;
+    transition: all .5s;
+
+}
