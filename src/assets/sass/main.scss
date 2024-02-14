@@ -1,20 +1,34 @@
-@import "./vars";
-@import "./fonts";
-@import "./animation";
-@import "./layout/table.scss";
-@import "./layout/buttons";
-@import "./layout/panels";
+@import "main/vars";
+@import "main/fonts";
+@import "main/animation";
+@import "main/layout/table.scss";
+@import "main/layout/buttons";
+@import "main/layout/panels";
+@import "main/layout/form";
 
 
 * {
-    direction: rtl;
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
+
+.theme-2 {
+    $sidebar: #272727;
+    $side-titr: #494949;
+}
+
 #Tizhoo_Ui {
     height: 100vh;
+}
+
+.Bg_Auth {
+    background: #fff !important;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.625;
+    color: $light-font !important;
 }
 
 *:focus,
@@ -28,6 +42,27 @@ a {
     color: #272727 !important;
 }
 
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-weight: 100;
+    line-height: 1.2;
+    color: #495057;
+}
+
+
+
 button:focus {
     border: none !important;
     outline: none !important;
@@ -39,6 +74,7 @@ button:visited {
     border: none !important;
     outline: none !important;
 }
+
 
 /* scrolls  */
 *::-webkit-scrollbar {
@@ -79,6 +115,9 @@ button:visited {
     background: $color-dark;
 }
 
+.mt-4-5 {
+    margin-top: 2rem;
+}
 
 
 /* box style  */
@@ -141,7 +180,7 @@ button:visited {
 }
 
 .ct {
-    color:  $green-light;
+    color: $green-light;
 }
 
 .ct-green-dark {
@@ -256,4 +295,3 @@ button:visited {
         width: 100% !important;
     }
 }
-

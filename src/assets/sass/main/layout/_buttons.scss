@@ -18,10 +18,6 @@
     color: #fff !important;
 }
 
-.btnRightNav {
-    width: 90%;
-    transition: all .5s;
-}
 
 
 .btn:active {
@@ -44,9 +40,22 @@
     border: none !important;
     padding: 8px;
 }
-
+.paddung-remove {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    text-align: center;
+}
 .activeBtn {
     background: #F3F1EF !important;
     transition: all .5s;
 
+}
+.btn-brand{
+    background-color: $green-dark;
+    color: #fff;
+    &:hover{
+        background-color: $green-dark-hover;
+        color: #fff;
+    }
+    transition: all .3s;
 }
