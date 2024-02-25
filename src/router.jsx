@@ -8,12 +8,13 @@ import LoginMain from "@features/auth/LoginMain";
 
 
 import MainLayout from "@layouts/main/MainLayout";
-import Students from "@pages/Students";
-import LessonsMain from "@pages/LessonsMain";
-import AcademyMain from "@pages/Academys";
-import BaseFeildMain from "@pages/BaseFeildMain";
-import TestCourseMain from "@pages/TestCourseMain";
-import ClassesMain from "@pages/ClassesMain";
+import StudentsMain from "@pages/pishro/StudentsMain";
+import LessonsMain from "@pages/pishro/LessonsMain";
+import AcademyMain from "@pages/pishro/Academys";
+import BaseFeildMain from "@pages/pishro/BaseFeildMain";
+import TestCourseMain from "@pages/pishro/TestCourseMain";
+import ClassesMain from "@pages/pishro/ClassesMain";
+import StudentScoreMain from "@pages/pishro/student-score-main";
 
 const router = createBrowserRouter([
 
@@ -22,9 +23,14 @@ const router = createBrowserRouter([
         path: "/",
         children: [
             {
-                element: <Students />,
-                errorElement: <Students />,
+                element: <StudentsMain />,
+                errorElement: <StudentsMain />,
                 index: true,
+            },
+            {
+                element: <StudentScoreMain />,
+                errorElement: <StudentScoreMain />,
+                path: '/student-score/:id/:baf'
             },
             {
                 element: <LessonsMain />,

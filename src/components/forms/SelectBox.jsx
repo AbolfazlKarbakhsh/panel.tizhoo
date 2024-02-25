@@ -1,22 +1,25 @@
 import React from 'react';
 
-const SelectBox = ({ label, id, inputclass = '', labelclass = '', validation = '', autoComplete = '', loop , selectedItem  }) => {
+const SelectBox = ({ label, id, inputclass = '', labelclass = '', validation = {}, autoComplete = '', loop, selectedItem, Api = "", NoChoise = false }) => {
     return (
         <div className='position-relative'>
             {
                 label && (<label className={`form-label  ${labelclass}`} htmlFor={id}>{label}</label>)
             }
             <select
-                class={`form-control form-control-lg  Fvazir  ${inputclass}`}
-                id={id} 
+                className={`form-control form-control-lg  Fvazir  ${inputclass}`}
+                id={id}
                 {...validation}
                 autoComplete={autoComplete}
-                defaultValue={selectedItem ? selectedItem : "none"}
+                defaultValue={selectedItem || ""}
             >
-                <option value={"none"}  className='Fvazir  disabled' disabled > انتخاب کنید</option>
+                {
+                !NoChoise ? <option value="" className='Fvazir  ' disabled> انتخاب کنید</option> : 
+                 <option value="0" className='Fvazir ' >   هیچکدام  </option>
+            }
                 {loop.map((e) => {
                     return (
-                        <option value={e.id} className='Fvazir' key={e.title + e.id}>  {e.title}</option>
+                        <option value={e.id} className='Fvazir' key={e.id}>  {Api == "name" ? e.name : e.title}</option>
                     )
                 })}
             </select>
@@ -25,3 +28,4 @@ const SelectBox = ({ label, id, inputclass = '', labelclass = '', validation = '
 }
 
 export default SelectBox;
+ 

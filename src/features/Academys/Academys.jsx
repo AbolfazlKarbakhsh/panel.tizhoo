@@ -19,7 +19,6 @@ function Academys() {
   const [openDelete, hOpenClickDelModal, hCloseDelModal, confirmDelModal] = useModal(handelCofrimDeleteModal);
 
 
-
   //* configuration Add item 
   const handelCofrimCreate = (data) => {
     CreateBaseAndFeild(data)
@@ -28,20 +27,17 @@ function Academys() {
   const [openCreate, hOpenClickCreateModal, hCloseCreateModal, confirmCreateModal] = useModal(handelCofrimCreate);
 
 
-
-    //* configuration Edit item 
-    const handelCofrimEdit = (data) => {
-      EditBaseAndFeild(data)
-    }
-    const [EditBaseAndFeild] = usePutData("school_Edit", "school", "school_Get")
-    const [openEdit, clickOpenEdit, closeEditMobile, confirmEditModal] = useModal(handelCofrimEdit);
-  
-
+  //* configuration Edit item 
+  const handelCofrimEdit = (data) => {
+    EditBaseAndFeild(data)
+  }
+  const [EditBaseAndFeild] = usePutData("school_Edit", "school", "school_Get")
+  const [openEdit, clickOpenEdit, closeEditMobile, confirmEditModal] = useModal(handelCofrimEdit);
 
   return (
     <>
       {/* preview data on table  */}
-      <TableAcademys handleClickOpen={hOpenClickDelModal} openCreateModal={hOpenClickCreateModal}  clickOpenEdit={clickOpenEdit}/>
+      <TableAcademys handleClickOpen={hOpenClickDelModal} openCreateModal={hOpenClickCreateModal} clickOpenEdit={clickOpenEdit} />
 
       {/* delete modal  */}
       <Modal open={openDelete} handleClose={hCloseDelModal} confirm={confirmDelModal} contents={{ confirm: "حذف", head: "  حذف آموزشگاه " }}>
@@ -53,8 +49,8 @@ function Academys() {
         <CreateAcademys confirm={confirmCreateModal} handleClose={hCloseCreateModal} />
       </Modal>
 
-       {/* edit modal  */}
-       <Modal open={openEdit} handleClose={closeEditMobile} confirm={confirmEditModal} contents={{ confirm: " ویرایش", head: "  ویرایش سطر " }} defualtButtons={false}>
+      {/* edit modal  */}
+      <Modal open={openEdit} handleClose={closeEditMobile} confirm={confirmEditModal} contents={{ confirm: " ویرایش", head: "  ویرایش سطر " }} defualtButtons={false}>
         <CreateAcademys confirm={confirmEditModal} handleClose={closeEditMobile} />
       </Modal>
     </>

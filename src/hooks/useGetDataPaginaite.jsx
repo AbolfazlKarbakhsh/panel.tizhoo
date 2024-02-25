@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import { httpsInterceptedService } from "@core/http-service"
 
 const useGetDataPaginaite = (pageParams , pageSize , url , key) => {
+
     const { data, isPending, isError } = useQuery({
         queryKey: [key, pageParams],
         queryFn: async ({ queryKey }) => {

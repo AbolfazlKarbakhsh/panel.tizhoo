@@ -9,12 +9,17 @@ const IntialStateApp = {
 }
 
  const AppContextProvider = ({children}) => {
-    const [editState , setEditState] = useState('')
-    const [appState , dispatch] = useReducer(AppReducer , IntialStateApp)
 
+    // modal Edit State Globale 
+    const [editState , setEditState] = useState('')
+
+    // App State Globale 
+    const [appState , dispatch] = useReducer(AppReducer , IntialStateApp)
     const DrawerGigaMenu = () => {
         dispatch({type:'GigaMenuDrawer'})
     }
+
+
 
     return (
         <AppContext.Provider value={{gigaMenu : appState.gigaMenu , DrawerGigaMenu , editState , setEditState}}>

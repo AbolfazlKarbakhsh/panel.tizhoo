@@ -6,9 +6,8 @@ import { useDeleteData } from "@hooks/useDeleteData";
 import { usePutData } from "@hooks/usePutData";
 import CreateClasses from "./components/createClasses";
 import TableClasses from "./components/TableClasses";
-
-
-
+import {ConfigClass} from '@core/typeCrud';
+const config = ConfigClass;
 
 function Classes() {
 
@@ -16,7 +15,7 @@ function Classes() {
   const handelCofrimDeleteModal = (data) => {
     DeleteBaseAndFeild(data)
   }
-  const [DeleteBaseAndFeild] = useDeleteData("ClassRome_Del", "ClassRome", "ClassRome_Get")
+  const [DeleteBaseAndFeild] = useDeleteData(config.del, config.api, config.get)
   const [openDelete, hOpenClickDelModal, hCloseDelModal, confirmDelModal] = useModal(handelCofrimDeleteModal);
 
 
@@ -25,7 +24,7 @@ function Classes() {
   const handelCofrimCreate = (data) => {
     CreateBaseAndFeild(data)
   }
-  const [CreateBaseAndFeild] = usePostData("ClassRome_Create", "ClassRome", "ClassRome_Get")
+  const [CreateBaseAndFeild] = usePostData(config.create, config.api, config.get)
   const [openCreate, hOpenClickCreateModal, hCloseCreateModal, confirmCreateModal] = useModal(handelCofrimCreate);
 
 
@@ -34,7 +33,7 @@ function Classes() {
     const handelCofrimEdit = (data) => {
       EditBaseAndFeild(data)
     }
-    const [EditBaseAndFeild] = usePutData("ClassRome_Edit", "ClassRome", "ClassRome_Get")
+    const [EditBaseAndFeild] = usePutData(config.edit, config.api, config.get)
     const [openEdit, clickOpenEdit, closeEditMobile, confirmEditModal] = useModal(handelCofrimEdit);
   
 
@@ -51,12 +50,12 @@ function Classes() {
 
       {/* add modal  */}
       <Modal open={openCreate} handleClose={hCloseCreateModal} confirm={confirmCreateModal} contents={{ confirm: "افزودن", head: "  افزودن سطر " }} defualtButtons={false}>
-        <CreateClasses confirm={confirmCreateModal} handleClose={hCloseCreateModal} />
+        <CreateClasses confirm={confirmCreateModal} handleClose={hCloseCreateModal} BtnConfirm="افزودن"/>
       </Modal>
 
        {/* edit modal  */}
        <Modal open={openEdit} handleClose={closeEditMobile} confirm={confirmEditModal} contents={{ confirm: " ویرایش", head: "  ویرایش سطر " }} defualtButtons={false}>
-        <CreateClasses confirm={confirmEditModal} handleClose={closeEditMobile} />
+        <CreateClasses confirm={confirmEditModal} handleClose={closeEditMobile} BtnConfirm="ویرایش" />
       </Modal>
     </>
   );

@@ -17,12 +17,12 @@ function MainLayout() {
         <>
             {
                 StateToken && (
-                    <div className="CenterBox animatinLoad">
+                    <div className="CenterBox animatinLoad ">
                         <div className="PanelCenter row m-0">
                     
 
                             <div className="col-12 col-md-9 col-lg-10 mainContent px-2" style={{ overflow: 'auto' }}>
-                                <div className=" mio unload">
+                                <div className=" mio unload ">
                                     <HeaderMobile />
                                     <Outlet />
                                 </div>

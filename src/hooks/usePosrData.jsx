@@ -5,7 +5,7 @@ import { toast } from "react-toastify"
 
 export const usePostData = (key , url , refKey) => {
     const client = useQueryClient()
-    const {mutate,  isPaused} = useMutation({
+    const {mutate,  isPaused , isError , error} = useMutation({
         mutationKey: [key],
         mutationFn: async (data) => {
             const res = await httpsInterceptedService.post(`${url}` , data )
@@ -25,6 +25,16 @@ export const usePostData = (key , url , refKey) => {
             });
          }
     } , [isPaused])
+    
+    useEffect(() => {
+         if(isError){
+            toast.error(error?.response?.data?.message, {
+                position: "bottom-left",
+            });
+         }
+    } , [isError])
+
+
   
 
     return [mutate ]

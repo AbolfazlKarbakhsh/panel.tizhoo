@@ -59,9 +59,14 @@
 .th-Remove-FontWeight{
     th{
         font-weight: 400;
+        text-align:center !important;
     }
+
 }
 
+td  , th{
+    text-align: center !important;
+}
 
 // alerts for tabels 
 .Loader{

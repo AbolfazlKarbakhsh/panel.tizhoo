@@ -14,6 +14,12 @@
 }
 
 
+.rtl {
+    direction: rtl !important;
+}
+
+
+
 .theme-2 {
     $sidebar: #272727;
     $side-titr: #494949;
@@ -61,7 +67,10 @@ h6 {
     color: #495057;
 }
 
-
+.flex-th-center th *{
+    display: flex;
+    flex-direction: column;    
+}
 
 button:focus {
     border: none !important;

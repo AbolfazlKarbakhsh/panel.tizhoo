@@ -11,9 +11,9 @@ const useGetData = (url, key) => {
     })
 
     return [
-    data,
-    isPending,
-    isError,
+        data,
+        isPending,
+        isError,
     ]
 
 }

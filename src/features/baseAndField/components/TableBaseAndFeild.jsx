@@ -32,10 +32,11 @@ function TableBaseAndFeild({  handleClickOpen , openCreateModal , clickOpenEdit}
             <div className="col-12 px-0 mt-1 mx-0 unload position-relative px-2 px-lg-3 ">
               <div className="row ">
                 <div className="table-responsive-lg no-scroll rounded-1 mt-4 p-0 col-12  ">
-                  <table class="table table-light-td width-mobile-table-600">
-                    <thead class="thead-dark-custom ">
+                  <table className="table table-light-td width-mobile-table-600">
+                    <thead className="thead-dark-custom ">
                       <tr className="th-Remove-FontWeight">
                         <th scope="col">#</th>
+                        <th scope="col">Id</th>
                         <th scope="col">پایه و رشته</th>
                         <th scope="col">عملیات </th>
                       </tr>
@@ -44,10 +45,11 @@ function TableBaseAndFeild({  handleClickOpen , openCreateModal , clickOpenEdit}
                       {BafData?.data  &&
                         BafData?.data.map((e, i) => {
                           return (
-                            <tr>
+                            <tr key={i}>
                               <td scope="row">{i + 1}</td>
+                              <td> {e.id} </td>
                               <td> {e.title} </td>
-                              <td className="d-flex justify-content-start">
+                              <td className="d-flex justify-content-center">
                                 <button
                                   className={`btn  btn-global mx-2 my-1 my-md-0 px-2  font3 centerAll`}
                                   onClick={() => {clickOpenEdit(e.id);setEditState(e.title)}}

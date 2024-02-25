@@ -26,11 +26,7 @@ export const useDeleteData = (key , url , refKey  ) => {
          }
     } , [isPaused , isError])
   
-    useEffect(() => {
-        if(isPending){
-            console.log(isPending)
-        }
-    }, [isPending]);
+
 
     return [mutate ]
 }

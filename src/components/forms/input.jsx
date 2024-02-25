@@ -1,6 +1,7 @@
 import React from 'react';
 
-const InputWithLabel = ({ label, type = 'text', id, inputclass = '', labelclass = '', validation = '', placeholder = '', value = '' , autoComplete = '' }) => {
+const InputWithLabel = ({ label, type = 'text', id, inputclass = '', labelclass = '', validation = ''
+, placeholder = '', value = '' , autoComplete = ''  }) => {
     return (
         <div className='position-relative'>
             {
@@ -13,6 +14,7 @@ const InputWithLabel = ({ label, type = 'text', id, inputclass = '', labelclass 
                 {...validation}
                 defaultValue={value}
                 autoComplete={autoComplete}
+               
             />
         </div>
     );
