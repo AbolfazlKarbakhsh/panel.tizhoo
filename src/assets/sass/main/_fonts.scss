@@ -3,7 +3,11 @@
 
 @font-face {
     font-family: 'iranSans';
-    src: url('../fonts/IRANSans.ttf');
+    src: url('../../fonts/IRANSans.ttf');
+}
+@font-face {
+    font-family: 'SarbazTizhoo';
+    src: url('../../fonts/Sarbaz.ttf');
 }
 
 
@@ -18,7 +22,7 @@
     font-size: .85rem;
 }
 .FSarbaz {
-    font-family: Sarbaz;
+    font-family: 'SarbazTizhoo';
 }
 
 
