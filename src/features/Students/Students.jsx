@@ -3,52 +3,59 @@ import Modal from "@components/global/modal/modal";
 import { useModal } from "@hooks/crudModal/useModal";
 import { usePostData } from "@hooks/usePosrData";
 import { useDeleteData } from "@hooks/useDeleteData";
+import useFilePdfStudent from "@hooks/Report/useFilePdfStudent";
+import { useModalV2 } from "@hooks/crudModal/useModalV2";
 import { usePutData } from "@hooks/usePutData";
-import TableLesson from "./components/TableStudents";
+import useFilePdfStudentAll from "@hooks/Report/useFilePdfStudents";
 import { ConfigStudents } from '@core/typeCrud';
+import useStudentData from "@store/pishro/student/studentStore";
+import TableStudents from "./components/TableStudents";
 import CreateStudents from "./components/createStudents";
 import SortEngine from "./components/SortEngine";
+import ReportStudent from "./components/Reports/ReportStudent";
 const config = ConfigStudents;
 
 
 function Students() {
 
+  const DataStudent = useStudentData(state => state.data)
   //* configuration delete item 
-  const handelCofrimDeleteModal = (data) => {
-    DeleteLesson(data)
-  }
+  const handelCofrimDeleteModal = data => DeleteLesson(data)
   const [DeleteLesson] = useDeleteData(config.del, config.api, config.get)
   const [openDelete, hOpenClickDelModal, hCloseDelModal, confirmDelModal] = useModal(handelCofrimDeleteModal);
 
-
-
   //* configuration Add item 
-  const handelCofrimCreate = (data) => {
-    CreateLessonApi(data)
-  }
-  const [CreateLessonApi] = usePostData(config.create, config.api, config.get)
-  const [openCreate, hOpenClickCreateModal, hCloseCreateModal, confirmCreateModal] = useModal(handelCofrimCreate);
-
-
+  const handelCofrimCreate = data => CreateStudent(data)
+  const [CreateStudent] = usePostData(config.create, config.api, config.get)
+  const [h_Create, ModalCreate] = useModalV2({ confirm: " افزودن", head: "  افزودن اطلاعات دانش آموز " }, handelCofrimCreate);
 
   //* configuration Edit item 
-  const handelCofrimEdit = (data) => {
-    EditLesson(data)
-  }
-  const [EditLesson] = usePutData(config.edit, config.api, config.get)
-  const [openEdit, clickOpenEdit, closeEditMobile, confirmEditModal] = useModal(handelCofrimEdit);
+  const handelCofrimEdit = data => EditStudent(data)
+  const [EditStudent] = usePutData(config.edit, config.api, config.get)
+  const [h_Edit, ModalEdit] = useModalV2({ confirm: " ویرایش", head: "  ویرایش اطلاعات دانش آموز " }, handelCofrimEdit);
 
 
 
+  //* configuration Pdf a student  
+  const handelReportStudent = data => ExportPdf({ userId: data.id, testId: data.testId })
+  const [ExportPdf] = useFilePdfStudent("ReportCard/printReportCard", "ReportCard_Get_Modal_studnent")
+  const [h_Report, ModalReport] = useModalV2({ confirm: " چاپ ", head: "  چاپ کارنامه  " }, handelReportStudent);
+
+  //* configuration Pdf fOR All Students  
+  
+  const handelReportStudentAll = dataS => ExportPdfAll({ usersId: DataStudent , testId: +dataS.testId })
+  const [ExportPdfAll] = useFilePdfStudentAll("ReportCard/printReportCardGroup", "ReportCard_Get_Modal_studnent_All")
+  const [h_ReportAll, ModalReportAll] = useModalV2({ confirm: " چاپ ", head: "  چاپ کارنامه گروهی   " }, handelReportStudentAll);
 
   return (
     <>
-
+{/* 3-8-20 */}
       {/* sort Students  */}
-      <SortEngine />
+      <SortEngine h_ReportAll={h_ReportAll.open}/>
 
       {/*preview data on table*/}
-      <TableLesson handleClickOpen={hOpenClickDelModal} openCreateModal={hOpenClickCreateModal} clickOpenEdit={clickOpenEdit} />
+      <TableStudents handleClickOpen={hOpenClickDelModal} openCreateModal={h_Create.open} clickOpenEdit={h_Edit.open} clickOpenPdf={h_Report.open}  />
+
 
       {/*delete modal*/}
       <Modal open={openDelete} handleClose={hCloseDelModal} confirm={confirmDelModal} contents={{ confirm: "حذف", head: "  حذف دانش آموز " }}>
@@ -56,14 +63,24 @@ function Students() {
       </Modal>
 
       {/*add modal*/}
-      <Modal open={openCreate} handleClose={hCloseCreateModal} confirm={confirmCreateModal} contents={{ confirm: "افزودن", head: "  افزودن سطر " }} defualtButtons={false}>
-        <CreateStudents confirm={confirmCreateModal} handleClose={hCloseCreateModal} BtnConfirm="افزودن" stateCrud="add" />
-      </Modal>
+      <ModalCreate >
+        <CreateStudents confirm={h_Create.confirm} handleClose={h_Create.close} BtnConfirm="افزودن" stateCrud="add" />
+      </ModalCreate>
 
       {/*edit modal*/}
-      <Modal open={openEdit} handleClose={closeEditMobile} confirm={confirmEditModal} contents={{ confirm: " ویرایش", head: "  ویرایش سطر " }} defualtButtons={false}>
-        <CreateStudents confirm={confirmEditModal} handleClose={closeEditMobile} BtnConfirm="ویرایش" />
-      </Modal>
+      <ModalEdit>
+        <CreateStudents confirm={h_Edit.confirm} handleClose={h_Edit.close} BtnConfirm="ویرایش" />
+      </ModalEdit>
+
+      {/*Export Pdf Student modal*/}
+      <ModalReport>
+        <ReportStudent confirmPdf={h_Report.confirm} closePdf={h_Report.close} />
+      </ModalReport>
+
+      {/*Export All Pdf Student modal*/}
+      <ModalReportAll>
+        <ReportStudent confirmPdf={h_ReportAll.confirm} closePdf={h_ReportAll.close} />
+      </ModalReportAll>
 
     </>
   );

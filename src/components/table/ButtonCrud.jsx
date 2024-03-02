@@ -3,7 +3,7 @@ import React from 'react';
 const ButtonCrud = ({onClick = () => {} , name = '' , icon = ''}) => {
     return (
         <button
-            className={`btn  btn-global mx-2  my-md-0 px-2  font3 centerAll`}
+            className={`btn  btn-global mx-2  my-md-0 px-2  font3 d-flex justify-content-around align-items-center`}
             onClick={onClick}
         >
             <span className="font1 me-1" > {name} </span>

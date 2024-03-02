@@ -1,4 +1,4 @@
-import { Link, createBrowserRouter, redirect } from "react-router-dom";
+import { Link, createBrowserRouter } from "react-router-dom";
 
 // Auth Routing Components 
 import IdentityLayout from "@layouts/Identity/IdentityLayout";
@@ -15,6 +15,7 @@ import BaseFeildMain from "@pages/pishro/BaseFeildMain";
 import TestCourseMain from "@pages/pishro/TestCourseMain";
 import ClassesMain from "@pages/pishro/ClassesMain";
 import StudentScoreMain from "@pages/pishro/student-score-main";
+import Page404 from "@pages/Page404";
 
 const router = createBrowserRouter([
 
@@ -72,7 +73,7 @@ const router = createBrowserRouter([
     },
     {
         path: '*' ,
-        element: <Link to={'/login'} className="btn btn-danger">  Page 404</Link>,
+        element: <Page404 />,
     }
 ]);
 

@@ -2,27 +2,31 @@
 
 
 @font-face {
-    font-family: 'iranSans';
-    src: url('../../fonts/IRANSans.ttf');
+    font-family: 'vz';
+    src: url('fonts/Vazir.ttf');
 }
+
 @font-face {
     font-family: 'SarbazTizhoo';
-    src: url('../../fonts/Sarbaz.ttf');
+    src: url('fonts/Sarbaz.ttf');
 }
 
 
 
-.Fvazir , body , .Toastify__toast-body *{
-    font-family: 'iranSans' !important;
+.Fvazir,
+body,
+.Toastify__toast-body * {
+    font-family: 'vz', 'vazir' !important;
 }
 
 
-.Toastify__toast-body{
+.Toastify__toast-body {
     font-weight: 100;
     font-size: .85rem;
 }
+
 .FSarbaz {
-    font-family: 'SarbazTizhoo';
+    font-family: 'SarbazTizhoo', 'sarbaz';
 }
 
 

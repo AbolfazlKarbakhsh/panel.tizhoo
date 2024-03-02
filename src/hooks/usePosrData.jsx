@@ -8,7 +8,7 @@ export const usePostData = (key , url , refKey) => {
     const {mutate,  isPaused , isError , error} = useMutation({
         mutationKey: [key],
         mutationFn: async (data) => {
-            const res = await httpsInterceptedService.post(`${url}` , data )
+            const res = await httpsInterceptedService.post(`${url}` , data  )
             return res
         },onSuccess: () => {
             client.invalidateQueries({ queryKey: [refKey] });

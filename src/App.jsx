@@ -5,6 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 import router from './router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import useGetData from './hooks/useGetData';
+
 const client = new QueryClient({
   defaultOptions: {
     queries: {
@@ -21,13 +23,13 @@ const client = new QueryClient({
 
 function App() {
 
-
   return (
     <>
       <QueryClientProvider client={client}>
         <ToastContainer rtl />
         <RouterProvider router={router} />
-          <ReactQueryDevtools />
+        
+        <ReactQueryDevtools />
       </QueryClientProvider>
     </>
   )

@@ -7,10 +7,12 @@ import HeaderTabelLessons from "@components/global/headerTabelLessons";
 import Loader from "@components/global/serverState/Loader";
 import { useAppContext } from "@context/AppContext";
 import { Pagination, Stack } from "@mui/material";
-import {ConfigClass} from '@core/typeCrud';
+import { ConfigClass } from '@core/typeCrud';
+import { TbReport } from "react-icons/tb";
+import ButtonCrud from "@components/table/ButtonCrud";
 const config = ConfigClass;
 
-function TableClasses({ handleClickOpen, openCreateModal, clickOpenEdit }) {
+function TableClasses({ handleClickOpen, openCreateModal, clickOpenEdit , h_ReportAllOpen }) {
 
   const { setEditState } = useAppContext()
 
@@ -24,7 +26,7 @@ function TableClasses({ handleClickOpen, openCreateModal, clickOpenEdit }) {
   const handelChangePaginaite = (e, index) => {
     setPageParam(index);
   };
-  
+
 
   return (
     <>
@@ -58,31 +60,9 @@ function TableClasses({ handleClickOpen, openCreateModal, clickOpenEdit }) {
                               <td> {e.title} </td>
                               <td> {e.schoolName} </td>
                               <td className="d-flex justify-content-center">
-                                <button
-                                  className={`btn  btn-global mx-2 my-1 my-md-0 px-2  font3 centerAll`}
-                                  onClick={() => { clickOpenEdit(e.id); setEditState({ title: e.title, schoolName: e.schoolName, schoolId: e.schoolId }) }}
-                                >
-                                  <span className="font1 me-1" >ویرایش</span>
-                                  <span
-                                    className=" font5 ct mx-1"
-                                    style={{ marginTop: "-4px" }}
-                                  >
-                                    <FaRegEdit />
-                                  </span>
-                                </button>
-
-                                <button
-                                  className={`btn  btn-global mx-2 my-1 my-md-0 px-2 font3 centerAll`}
-                                  onClick={() => handleClickOpen(e.id)}
-                                >
-                                  <span className="font1">حذف</span>
-                                  <span
-                                    className="font5 ct mx-1"
-                                    style={{ marginTop: "-5px" }}
-                                  >
-                                    <MdDeleteForever />
-                                  </span>
-                                </button>
+                                <ButtonCrud name=" چاپ کارنامه  " icon={<TbReport />} onClick={() => {h_ReportAllOpen(e.id)}}  />
+                                <ButtonCrud name=" ویرایش   " icon={ <FaRegEdit />}  onClick={() => { clickOpenEdit(e.id); setEditState({ title: e.title, schoolName: e.schoolName, schoolId: e.schoolId }) }}  />
+                                <ButtonCrud name=" چاپ کارنامه  " icon={<MdDeleteForever />}  onClick={() => handleClickOpen(e.id)} />
                               </td>
                             </tr>
                           );

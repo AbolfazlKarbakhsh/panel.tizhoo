@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import SelectBox from '@components/forms/SelectBox';
 import InputWithLabel from "@components/forms/input";
+import ButtonCrud from '@components/table/ButtonCrud';
 import { useForm } from 'react-hook-form';
 import { useQueryClient } from '@tanstack/react-query';
 import { useStudentContext } from "@context/Students/StudentContext";
+import { TbReport } from 'react-icons/tb';
 
-const SortEngine = () => {
+const SortEngine = ({h_ReportAll}) => {
     const { register, watch } = useForm()
     const client = useQueryClient()
     const { dispatchSortStudent } = useStudentContext()
@@ -26,8 +28,9 @@ const SortEngine = () => {
 
     return (
         <div className="BoxTiels bg-white mt-2 rounded-3 px-4 unload m-3 mt-3 ">
-            <div className='text-dark   font-sm-3 font-md-5 rtl' >
-                مرتب سازی
+            <div className='text-dark   font-sm-3 font-md-5 rtl d-flex justify-content-between align-content-center' >
+               <div> مرتب سازی</div>
+               <ButtonCrud name=" چاپ کارنامه گروهی " icon={<TbReport />} onClick={h_ReportAll}/>
             </div>
             <div className='row mt-lg-2 justify-content-end'>
 

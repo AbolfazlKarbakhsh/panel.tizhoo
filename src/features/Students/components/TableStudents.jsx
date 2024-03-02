@@ -1,30 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeaderTabelLessons from "@components/global/headerTabelLessons";
 import Loader from "@components/global/serverState/Loader";
 import { Pagination, Stack } from "@mui/material";
 import useGetDataParams from "@hooks/useGetDataParams";
-
 import { useAppContext } from "@context/AppContext";
 import { useStudentContext } from "@context/Students/StudentContext";
 import { ConfigStudents } from '@core/typeCrud';
 import TableButtons from "./TableButtons";
+import useStudentData from "@store/pishro/student/studentStore";
+import SelectPaginate from "@components/table/SelectPaginaote";
 const config = ConfigStudents;
 
-function TableStudents({ handleClickOpen, openCreateModal, clickOpenEdit }) {
-  const { setEditState } = useAppContext()
 
+function TableStudents({ handleClickOpen, openCreateModal, clickOpenEdit, clickOpenPdf }) {
+  const { setEditState } = useAppContext()
+  const { changeData } = useStudentData(state => state.actions)
   //* cofiguration get items 
   const [pageParam, setPageParam] = useState(1);
+  const [SizeParam, setSizeParam] = useState(10);
   const { SortStudentState: { baseAndFieldId, schoolId, mobile } } = useStudentContext()
   const ParmsGetAllServiece = [
     { paramUrl: 'page', paramKey: pageParam },
-    { paramUrl: 'pageSize', paramKey: 10 },
+    { paramUrl: 'pageSize', paramKey: SizeParam },
     { paramUrl: 'baseAndFieldId', paramKey: baseAndFieldId },
     { paramUrl: 'schoolId', paramKey: schoolId },
     { paramUrl: 'mobile', paramKey: mobile },
   ]
   const [DataStudent, PendingStudent, ErrorStudent] = useGetDataParams(ParmsGetAllServiece, config.api, config.get)
-
+  useEffect(() => {
+    if (DataStudent) {
+      changeData(DataStudent?.data)
+    }
+  }, [DataStudent]);
 
   const handelChangePaginaite = (e, index) => {
     setPageParam(index);
@@ -93,7 +100,7 @@ function TableStudents({ handleClickOpen, openCreateModal, clickOpenEdit }) {
                               <td> {e.baseAndField} </td>
 
                               <td className="d-flex justify-content-center">
-                                <TableButtons clickOpenEdit={clickOpenEdit} handelEditStudent={handelEditStudent} e={e} handleClickOpen={handleClickOpen} />
+                                <TableButtons clickOpenEdit={clickOpenEdit} handelEditStudent={handelEditStudent} e={e} handleClickOpen={handleClickOpen} clickOpenPdf={clickOpenPdf} />
                               </td>
                             </tr>
                           );
@@ -104,23 +111,29 @@ function TableStudents({ handleClickOpen, openCreateModal, clickOpenEdit }) {
               </div>
             </div>
           </div>
-          <div>
 
-            <Stack spacing={20}>
-              <Pagination
-                count={DataStudent?.totalCount}
-                variant="outlined"
-                shape="rounded"
-                className="fff"
-                color="secondary"
-                onChange={handelChangePaginaite}
-                defaultPage={pageParam}
-              />
-            </Stack>
-          </div>
 
         </div>
       )}
+
+      <div className="BoxTiels bg-white mt-2 rounded-3 px-4 ">
+        <Stack spacing={20}>
+          <div className="d-flex justify-content-md-between  justify-content-around flex-wrap align-items-center">
+
+            <Pagination
+              count={DataStudent?.totalCount}
+              variant="outlined"
+              shape="rounded"
+              className="fff"
+              color="secondary"
+              onChange={handelChangePaginaite}
+              defaultPage={pageParam}
+            />
+            <SelectPaginate name="StuSize" setState={setSizeParam} />
+          </div>
+        </Stack>
+
+      </div>
     </>
   );
 }
