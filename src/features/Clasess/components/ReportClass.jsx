@@ -46,7 +46,7 @@ function ReportClass({confirmPdf , closePdf}) {
                     انصراف
                 </div>
                 <button className="btn btn-brand mx-2 font-sm-2 font-md-3 " style={{ fontWeight: "200" }} type='submit'>
-                    چاپ
+                    گزارش
                 </button>
             </dir>
         </form>

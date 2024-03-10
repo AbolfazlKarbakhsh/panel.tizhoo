@@ -5,7 +5,7 @@ import ErrorText from '@components/forms/errorText';
 import { useForm } from 'react-hook-form';
 import { useQueryClient } from '@tanstack/react-query';
 
-function ReportStudent({confirmPdf , closePdf}) {
+function ReportManageTecher({confirmPdf , closePdf}) {
     const client = useQueryClient()
     const { register, handleSubmit, formState: { errors } } = useForm()
     const HandelCofirm = (data) => {
@@ -40,4 +40,4 @@ function ReportStudent({confirmPdf , closePdf}) {
     )
 }
 
-export default ReportStudent
+export default ReportManageTecher

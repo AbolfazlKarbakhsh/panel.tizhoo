@@ -35,26 +35,26 @@ function Students() {
   const [h_Edit, ModalEdit] = useModalV2({ confirm: " ویرایش", head: "  ویرایش اطلاعات دانش آموز " }, handelCofrimEdit);
 
 
-
   //* configuration Pdf a student  
   const handelReportStudent = data => ExportPdf({ userId: data.id, testId: data.testId })
   const [ExportPdf] = useFilePdfStudent("ReportCard/printReportCard", "ReportCard_Get_Modal_studnent")
-  const [h_Report, ModalReport] = useModalV2({ confirm: " چاپ ", head: "  چاپ کارنامه  " }, handelReportStudent);
+  const [h_Report, ModalReport] = useModalV2({ confirm: " گزارش ", head: "  گزارش کارنامه  " }, handelReportStudent);
 
   //* configuration Pdf fOR All Students  
-  
-  const handelReportStudentAll = dataS => ExportPdfAll({ usersId: DataStudent , testId: +dataS.testId })
+  const handelReportStudentAll = dataS => ExportPdfAll({ usersId: DataStudent, testId: +dataS.testId })
   const [ExportPdfAll] = useFilePdfStudentAll("ReportCard/printReportCardGroup", "ReportCard_Get_Modal_studnent_All")
-  const [h_ReportAll, ModalReportAll] = useModalV2({ confirm: " چاپ ", head: "  چاپ کارنامه گروهی   " }, handelReportStudentAll);
+  const [h_ReportAll, ModalReportAll] = useModalV2({ confirm: " گزارش ", head: "  گزارش کارنامه گروهی   " }, handelReportStudentAll);
 
+
+  
   return (
     <>
-{/* 3-8-20 */}
+      {/* 3-8-20 */}
       {/* sort Students  */}
-      <SortEngine h_ReportAll={h_ReportAll.open}/>
+      <SortEngine h_ReportAll={h_ReportAll.open} />
 
       {/*preview data on table*/}
-      <TableStudents handleClickOpen={hOpenClickDelModal} openCreateModal={h_Create.open} clickOpenEdit={h_Edit.open} clickOpenPdf={h_Report.open}  />
+      <TableStudents handleClickOpen={hOpenClickDelModal} openCreateModal={h_Create.open} clickOpenEdit={h_Edit.open} clickOpenPdf={h_Report.open} />
 
 
       {/*delete modal*/}

@@ -60,9 +60,9 @@ function TableClasses({ handleClickOpen, openCreateModal, clickOpenEdit , h_Repo
                               <td> {e.title} </td>
                               <td> {e.schoolName} </td>
                               <td className="d-flex justify-content-center">
-                                <ButtonCrud name=" چاپ کارنامه  " icon={<TbReport />} onClick={() => {h_ReportAllOpen(e.id)}}  />
+                                <ButtonCrud name=" گزارش کارنامه  " icon={<TbReport />} onClick={() => {h_ReportAllOpen(e.id)}}  />
                                 <ButtonCrud name=" ویرایش   " icon={ <FaRegEdit />}  onClick={() => { clickOpenEdit(e.id); setEditState({ title: e.title, schoolName: e.schoolName, schoolId: e.schoolId }) }}  />
-                                <ButtonCrud name=" چاپ کارنامه  " icon={<MdDeleteForever />}  onClick={() => handleClickOpen(e.id)} />
+                                <ButtonCrud name=" حذف   " icon={<MdDeleteForever />}  onClick={() => handleClickOpen(e.id)} />
                               </td>
                             </tr>
                           );

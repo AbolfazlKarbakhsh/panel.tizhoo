@@ -6,17 +6,20 @@ import { MdDeleteForever } from "react-icons/md";
 import Loader from "@components/global/serverState/Loader";
 import { Pagination, Stack } from "@mui/material";
 import { useAppContext } from "@context/AppContext";
+import ButtonCrud from "@components/table/ButtonCrud";
+import { TbReport } from "react-icons/tb";
 
-function TableAcademys({  handleClickOpen , openCreateModal , clickOpenEdit}) {
-  const { setEditState} = useAppContext()
-    // cofiguration get item 
-    const [pageParam, setPageParam] = useState(1);
-    const { BafData, BafPending, BafError } = useGetDataPaginaite(
-      pageParam,
-      10,
-      "school",
-      "school_Get"
-    );
+
+function TableAcademys({ handleClickOpen, openCreateModal, clickOpenEdit , openReportMGTecher }) {
+  const { setEditState } = useAppContext()
+  // cofiguration get item 
+  const [pageParam, setPageParam] = useState(1);
+  const { BafData, BafPending, BafError } = useGetDataPaginaite(
+    pageParam,
+    10,
+    "school",
+    "school_Get"
+  );
   const handelChangePaginaite = (e, index) => {
     setPageParam(index);
   };
@@ -24,7 +27,7 @@ function TableAcademys({  handleClickOpen , openCreateModal , clickOpenEdit}) {
     <>
       {BafPending && <Loader />}
       {BafError && <Loader Error="In" />}
-      { (BafData?.data  && !BafError)  && (
+      {(BafData?.data && !BafError) && (
         <div className=" BoxTiels bg-white mt-2 rounded-3 px-4 unload m-3 mt-3">
           <HeaderTabelLessons nameHeading=" آموزشگاه ها" ModalAdd={() => openCreateModal()} />
 
@@ -42,7 +45,7 @@ function TableAcademys({  handleClickOpen , openCreateModal , clickOpenEdit}) {
                       </tr>
                     </thead>
                     <tbody>
-                      {BafData?.data  &&
+                      {BafData?.data &&
                         BafData?.data.map((e, i) => {
                           return (
                             <tr key={i}>
@@ -50,31 +53,9 @@ function TableAcademys({  handleClickOpen , openCreateModal , clickOpenEdit}) {
                               <td> {e.id} </td>
                               <td> {e.title} </td>
                               <td className="d-flex justify-content-center">
-                                <button
-                                  className={`btn  btn-global mx-2 my-1 my-md-0 px-2  font3 centerAll`}
-                                  onClick={() => {clickOpenEdit(e.id);setEditState(e.title)}}
-                                >
-                                  <span className="font1 me-1" >ویرایش</span>
-                                  <span
-                                    className=" font5 ct mx-1"
-                                    style={{ marginTop: "-4px" }}
-                                  >
-                                    <FaRegEdit />
-                                  </span>
-                                </button>
-
-                                <button
-                                  className={`btn  btn-global mx-2 my-1 my-md-0 px-2 font3 centerAll`}
-                                  onClick={() => handleClickOpen(e.id)}
-                                >
-                                  <span className="font1">حذف</span>
-                                  <span
-                                    className="font5 ct mx-1"
-                                    style={{ marginTop: "-5px" }}
-                                  >
-                                    <MdDeleteForever />
-                                  </span>
-                                </button>
+                                <ButtonCrud name="گزارش مدیر" icon={<TbReport />} onClick={() => {openReportMGTecher( e.id)} } />
+                                <ButtonCrud name="ویرایش" icon={<FaRegEdit />} onClick={() => { clickOpenEdit(e.id); setEditState(e.title) }} />
+                                <ButtonCrud name="حذف " icon={<MdDeleteForever />} onClick={() => handleClickOpen(e.id)} />
                               </td>
                             </tr>
                           );

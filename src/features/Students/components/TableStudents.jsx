@@ -9,6 +9,7 @@ import { ConfigStudents } from '@core/typeCrud';
 import TableButtons from "./TableButtons";
 import useStudentData from "@store/pishro/student/studentStore";
 import SelectPaginate from "@components/table/SelectPaginaote";
+import ExcelScore from "../../Student-Score/components/ExcelScore";
 const config = ConfigStudents;
 
 
@@ -44,7 +45,7 @@ function TableStudents({ handleClickOpen, openCreateModal, clickOpenEdit, clickO
         userName: e.userName,
         mobile: e.mobile,
         nationalCode: e.nationalCode,
-        classRome: e.classRome,
+        classId: e.classRomeId,
         schoolId: e.schoolId,
         baseAndFieldTitle: e.baseAndFieldTitle,
         baseAndField: e.baseAndFieldId,
@@ -61,7 +62,11 @@ function TableStudents({ handleClickOpen, openCreateModal, clickOpenEdit, clickO
       {(ErrorStudent) && <Loader Error="In" />}
       {(DataStudent?.data && !ErrorStudent) && (
         <div className=" BoxTiels bg-white mt-2 rounded-3 px-4 unload m-3 mt-3">
-          <HeaderTabelLessons nameHeading="دانش آموزان" ModalAdd={() => openCreateModal()} />
+
+          <HeaderTabelLessons nameHeading="دانش آموزان" ModalAdd={() => openCreateModal()} >
+            <ExcelScore />
+          </HeaderTabelLessons>
+
           <div className={`row  rtl`}>
             <div className="col-12 px-0 mt-1 mx-0 unload position-relative px-2 px-lg-3 ">
               <div className="row ">
@@ -116,9 +121,9 @@ function TableStudents({ handleClickOpen, openCreateModal, clickOpenEdit, clickO
         </div>
       )}
 
-      <div className="BoxTiels bg-white mt-2 rounded-3 px-4 ">
+      <div className="BoxTiels bg-white mt-1  rounded-3 px-4 mx-3 mb-3" >
         <Stack spacing={20}>
-          <div className="d-flex justify-content-md-between  justify-content-around flex-wrap align-items-center">
+          <div className="d-flex justify-content-md-between  justify-content-around flex-wrap align-items-center ">
 
             <Pagination
               count={DataStudent?.totalCount}

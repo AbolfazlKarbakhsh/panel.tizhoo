@@ -28,9 +28,9 @@ const SortEngine = ({h_ReportAll}) => {
 
     return (
         <div className="BoxTiels bg-white mt-2 rounded-3 px-4 unload m-3 mt-3 ">
-            <div className='text-dark   font-sm-3 font-md-5 rtl d-flex justify-content-between align-content-center' >
+            <div className='text-dark   font-sm-3 font-md-5 rtl d-flex justify-content-between align-items-center' >
                <div> مرتب سازی</div>
-               <ButtonCrud name=" چاپ کارنامه گروهی " icon={<TbReport />} onClick={h_ReportAll}/>
+               <ButtonCrud name=" گزارش کارنامه گروهی " icon={<TbReport />} onClick={h_ReportAll}/>
             </div>
             <div className='row mt-lg-2 justify-content-end'>
 

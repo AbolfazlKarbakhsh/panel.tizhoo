@@ -1,22 +1,11 @@
-/* Font Family Persian */
 
-
-@font-face {
-    font-family: 'vz';
-    src: url('fonts/Vazir.ttf');
-}
-
-@font-face {
-    font-family: 'SarbazTizhoo';
-    src: url('fonts/Sarbaz.ttf');
-}
 
 
 
 .Fvazir,
 body,
 .Toastify__toast-body * {
-    font-family: 'vz', 'vazir' !important;
+    font-family: 'vz' !important;
 }
 
 
@@ -26,7 +15,7 @@ body,
 }
 
 .FSarbaz {
-    font-family: 'SarbazTizhoo', 'sarbaz';
+    font-family: 'SarbazTizhoo';
 }
 
 

@@ -7,7 +7,6 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import Table from "@components/table/Table";
 import { useAppContext } from "@context/AppContext";
-import { SiMicrosoftexcel } from "react-icons/si";
 
 export function MainTable({
   openCreateModal,
@@ -23,8 +22,6 @@ export function MainTable({
     <div className=" BoxTiels bg-white mt-2 rounded-3 px-4 unload m-3 mt-3">
 
       <HeaderTabelLessons nameHeading=" لیست نمرات" ModalAdd={() => openCreateModal()} ButtonPlusName="ثبت نمره">
-        <ButtonCrud name=" ثبت نمره با Excel " icon={<SiMicrosoftexcel className="mx-1" />} onClick={() => {
-        }} />
       </HeaderTabelLessons>
 
       <Table>

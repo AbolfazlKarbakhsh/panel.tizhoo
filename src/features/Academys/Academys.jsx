@@ -6,6 +6,9 @@ import { useDeleteData } from "@hooks/useDeleteData";
 import { usePutData } from "@hooks/usePutData";
 import CreateAcademys from "./components/createAcademys";
 import TableAcademys from "./components/TableAcademys";
+import { useModalV2 } from "@hooks/crudModal/useModalV2";
+import ReportManageTecher from "./Reports/ReportManageTecher";
+import useFilePdfStudentAll from "@hooks/Report/useFilePdfStudents";
 
 
 
@@ -34,10 +37,17 @@ function Academys() {
   const [EditBaseAndFeild] = usePutData("school_Edit", "school", "school_Get")
   const [openEdit, clickOpenEdit, closeEditMobile, confirmEditModal] = useModal(handelCofrimEdit);
 
+  
+  //* configuration Pdf a student  
+  const handelReportStudent = data => ExportPdf({ schoolId: +data.id, testId: +data.testId })
+  const [ExportPdf] = useFilePdfStudentAll("Report/printManagementTeacher", "ReportCard_Get_Modal_ManageMentTecher")
+  const [h_Report, ModalReport] = useModalV2({ confirm: " گزارش ", head: "  گزارش مدیر  " }, handelReportStudent);
+
+
   return (
     <>
       {/* preview data on table  */}
-      <TableAcademys handleClickOpen={hOpenClickDelModal} openCreateModal={hOpenClickCreateModal} clickOpenEdit={clickOpenEdit} />
+      <TableAcademys handleClickOpen={hOpenClickDelModal} openCreateModal={hOpenClickCreateModal} clickOpenEdit={clickOpenEdit} openReportMGTecher={h_Report.open} />
 
       {/* delete modal  */}
       <Modal open={openDelete} handleClose={hCloseDelModal} confirm={confirmDelModal} contents={{ confirm: "حذف", head: "  حذف آموزشگاه " }}>
@@ -53,6 +63,12 @@ function Academys() {
       <Modal open={openEdit} handleClose={closeEditMobile} confirm={confirmEditModal} contents={{ confirm: " ویرایش", head: "  ویرایش سطر " }} defualtButtons={false}>
         <CreateAcademys confirm={confirmEditModal} handleClose={closeEditMobile} />
       </Modal>
+
+      
+      {/*Export Pdf Student modal*/}
+      <ModalReport>
+        <ReportManageTecher confirmPdf={h_Report.confirm} closePdf={h_Report.close} />
+      </ModalReport>
     </>
   );
 }

@@ -36,7 +36,7 @@ function Classes() {
   //* Report Thchers at clases
   const handelReportStudentAll = data => ExportPdfAll({classRomeId: +data.id ,testId: +data.testId ,lessonId: +data.lessonId  })
   const [ExportPdfAll] = useFilePdfStudentAll("Report/printTeacher", "ReportCard_Get_Modal_Class_All")
-  const [h_ReportAll, ModalReportAll] = useModalV2({ confirm: " چاپ ", head: "  چاپ کارنامه دبیر   " }, handelReportStudentAll);
+  const [h_ReportAll, ModalReportAll] = useModalV2({ confirm: " گزارش ", head: "  گزارش کارنامه دبیر   " }, handelReportStudentAll);
 
 
   return (

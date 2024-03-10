@@ -15,7 +15,7 @@ function TableButtons({clickOpenEdit , handelEditStudent , e, handleClickOpen , 
             <div className="p-1 d-flex flex-column justify-content-around rtl">
                 <ButtonCrud name="ثبت نمرات" icon={<FaClipboardList />} onClick={() => {navigate(`/student-score/${e.id}/${e.baseAndFieldId}`)} } />
                 <Spacer sp="my-1" />
-                <ButtonCrud name="چاپ کارنامه " icon={<TbReport />} onClick={() => {clickOpenPdf(e.id)} }/>
+                <ButtonCrud name="گزارش کارنامه " icon={<TbReport />} onClick={() => {clickOpenPdf(e.id)} }/>
                 <Spacer sp="my-1" />
                 <ButtonCrud name="ویرایش" icon={<FaRegEdit />} onClick={() => { clickOpenEdit(e.id) ; handelEditStudent(e) }} />
                 <Spacer sp="my-1" />

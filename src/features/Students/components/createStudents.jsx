@@ -11,6 +11,9 @@ import LineColor from '@components/global/lineColor';
 
 
 const CreateStudents = ({ confirm, handleClose, BtnConfirm, stateCrud }) => {
+
+  
+
     const client = useQueryClient()
     const { register, handleSubmit, formState: { errors }, watch } = useForm()
     const { editState } = useAppContext()
@@ -40,7 +43,7 @@ const CreateStudents = ({ confirm, handleClose, BtnConfirm, stateCrud }) => {
                         inputclass="font-sm-3 py-4-5 "
                         autoComplete='off'
                         validation={register('firstName', { required: true })}
-                        value={editState.firstName}
+                        value={editState.firstName || ''}
                     />
                     {errors.firstName && <ErrorText value="لطفا یک مقدار وارد کنید" />}
                     <Spacer sp="my-4" />
@@ -52,7 +55,7 @@ const CreateStudents = ({ confirm, handleClose, BtnConfirm, stateCrud }) => {
                         inputclass="font-sm-3 py-4-5 "
                         autoComplete='off'
                         validation={register('lastName', { required: true })}
-                        value={editState.lastName}
+                        value={editState.lastName || ''}
                     />
                     {errors.lastName && <ErrorText value="لطفا یک مقدار وارد کنید" />}
                     <Spacer sp="my-4" />
@@ -65,7 +68,7 @@ const CreateStudents = ({ confirm, handleClose, BtnConfirm, stateCrud }) => {
                         autoComplete='off'
                         type="text"
                         validation={register('userName', { required: "لطفا یک مقدار وارد کنید" })}
-                        value={editState.userName}
+                        value={editState.userName || ''}
 
                     />
                     {errors.userName && <ErrorText value="لطفا یک مقدار وارد کنید" />}
@@ -79,7 +82,7 @@ const CreateStudents = ({ confirm, handleClose, BtnConfirm, stateCrud }) => {
                         autoComplete='off'
                         type="text"
                         validation={register('mobile', { required: "لطفا یک مقدار وارد کنید", minLength: 11, maxLength: 11 })}
-                        value={editState.mobile}
+                        value={editState.mobile || ''}
 
                     />
                     {errors.mobile && <ErrorText value=" شماره تلفن وارد شده صحیح نمی باشد  " />}
@@ -93,7 +96,7 @@ const CreateStudents = ({ confirm, handleClose, BtnConfirm, stateCrud }) => {
                         autoComplete='off'
                         type="text"
                         validation={register('nationalCode', { required: "لطفا یک مقدار وارد کنید", minLength: 10, maxLength: 10 })}
-                        value={editState.nationalCode}
+                        value={editState.nationalCode || ''}
 
                     />
                     {errors.nationalCode && <ErrorText value=" کد ملی  وارد شده صحیح نمی باشد  " />}
@@ -109,8 +112,8 @@ const CreateStudents = ({ confirm, handleClose, BtnConfirm, stateCrud }) => {
                     inputclass="font-sm-3  my-3 py-4-5"
                     autoComplete='off'
                     validation={register('schoolId', { required: "لطفا یک مقدار انتخاب کنید", })}
-                    loop={client.getQueryData(['school_Get_Modal_studnet'])}
-                    selectedItem={editState.schoolId}
+                    loop={client.getQueryData(['school_Get_Modal_studnet']) || []}
+                    selectedItem={editState.schoolId || '10'}
                 />
                 {errors.schoolId && <ErrorText value="لطفا یک مقدار انتخاب  کنید" />}
                 <Spacer />
@@ -122,8 +125,8 @@ const CreateStudents = ({ confirm, handleClose, BtnConfirm, stateCrud }) => {
                     inputclass="font-sm-3  my-3 py-4-5"
                     autoComplete='off'
                     validation={register('baseAndField', { required: "لطفا یک مقدار انتخاب کنید", })}
-                    loop={client.getQueryData(['baseAndField_Get_Modal_studnet'])}
-                    selectedItem={editState.baseAndField}
+                    loop={client.getQueryData(['baseAndField_Get_Modal_studnet']) || []}
+                    selectedItem={editState.baseAndField || ''}
                 />
                 {errors.baseAndField && <ErrorText value="لطفا یک مقدار انتخاب  کنید" />}
                 <Spacer />
@@ -134,8 +137,8 @@ const CreateStudents = ({ confirm, handleClose, BtnConfirm, stateCrud }) => {
                     inputclass="font-sm-3  my-3 py-4-5"
                     autoComplete='off'
                     validation={register('classId', { required: "لطفا یک مقدار انتخاب کنید", })}
-                    loop={client.getQueryData(['class_Get_Modal_studnet'])}
-                    selectedItem={editState.classRome}
+                    loop={client.getQueryData(['class_Get_Modal_studnet']) || []}
+                    selectedItem={editState.classId || ''}
                 />
                 {errors.classId && <ErrorText value="لطفا یک مقدار انتخاب  کنید" />}
                 <Spacer />
@@ -147,8 +150,8 @@ const CreateStudents = ({ confirm, handleClose, BtnConfirm, stateCrud }) => {
                     inputclass="font-sm-3 "
                     autoComplete='off'
                     validation={register('provinceId', { required: "لطفا یک مقدار انتخاب کنید", })}
-                    loop={client.getQueryData(['CityProvince_Get_Modal_studnet'])}
-                    selectedItem={editState.provinceId}
+                    loop={client.getQueryData(['CityProvince_Get_Modal_studnet']) || []}
+                    selectedItem={editState.provinceId || '16'}
                     Api="name"
                 />
                 {errors.provinceId && <ErrorText value="لطفا یک مقدار انتخاب  کنید" />}
@@ -164,7 +167,7 @@ const CreateStudents = ({ confirm, handleClose, BtnConfirm, stateCrud }) => {
                             autoComplete='off'
                             validation={register('cityId', { required: "لطفا یک مقدار انتخاب کنید", })}
                             loop={citysData || []}
-                            selectedItem={editState.cityId}
+                            selectedItem={editState.cityId || '654'}
                             Api="name"
                         />
                         {errors.cityId && <ErrorText value="لطفا یک مقدار انتخاب  کنید" />}
@@ -184,7 +187,7 @@ const CreateStudents = ({ confirm, handleClose, BtnConfirm, stateCrud }) => {
                                 inputclass="font-sm-3 py-4-5 "
                                 autoComplete='off'
                                 validation={register('Password', { required: true })}
-                                value={''}
+                                value={'Aa123'}
                             />
                             {errors.Password && <ErrorText value=" پسورد وارد شده صحیح نمی باشد " />}
                             <Spacer sp="my-4" />
@@ -195,10 +198,12 @@ const CreateStudents = ({ confirm, handleClose, BtnConfirm, stateCrud }) => {
                                 labelclass="Input-Label-top text-muted font-sm-2"
                                 inputclass="font-sm-3 py-4-5 "
                                 autoComplete='off'
-                                validation={register('RePassword', { required: true , validate : value => {
-                                if(value !== watch('Password')) return false
-                                } })}
-                                value={''}
+                                validation={register('RePassword', {
+                                    required: true, validate: value => {
+                                        if (value !== watch('Password')) return false
+                                    }
+                                })}
+                                value={'Aa123'}
                             />
                             {errors.RePassword && <ErrorText value=" تکرار پسورد وارد شده صحیح نمی باشد " />}
                             <Spacer sp="my-4" />

@@ -1,9 +1,9 @@
 import React from 'react'
 import Students from '@features/Students/Students'
-import useGetData from "@hooks/useGetData";
 import StudentContextProvider from '@context/Students/StudentContext';
-function StudentsMain() {
+import useGetData from "@hooks/useGetData";
 
+function StudentsMain() {
 
   // get base and feild 
   useGetData("baseAndField/SelectList", "baseAndField_Get_Modal_studnet");
