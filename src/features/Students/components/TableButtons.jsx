@@ -1,11 +1,11 @@
 import React from 'react'
-import Spacer from "@components/global/spacer";
 import { FaClipboardList } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 import BasicPopover from '@components/forms/Poppover';
 import { MdDeleteForever } from "react-icons/md";
 import ButtonCrud from '@components/table/ButtonCrud';
 import { useNavigate } from 'react-router';
+import Spacer from "@components/global/spacer";
 import { TbReport } from "react-icons/tb";
 
 function TableButtons({clickOpenEdit , handelEditStudent , e, handleClickOpen , clickOpenPdf}) {

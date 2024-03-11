@@ -10,9 +10,12 @@ import { Pagination, Stack } from "@mui/material";
 import { ConfigClass } from '@core/typeCrud';
 import { TbReport } from "react-icons/tb";
 import ButtonCrud from "@components/table/ButtonCrud";
+import BasicPopover from '@components/forms/Poppover';
+import Spacer from "@components/global/spacer";
+
 const config = ConfigClass;
 
-function TableClasses({ handleClickOpen, openCreateModal, clickOpenEdit , h_ReportAllOpen }) {
+function TableClasses({ handleClickOpen, openCreateModal, clickOpenEdit, h_ReportAllOpen, h_openMangeStudent }) {
 
   const { setEditState } = useAppContext()
 
@@ -60,9 +63,18 @@ function TableClasses({ handleClickOpen, openCreateModal, clickOpenEdit , h_Repo
                               <td> {e.title} </td>
                               <td> {e.schoolName} </td>
                               <td className="d-flex justify-content-center">
-                                <ButtonCrud name=" گزارش کارنامه  " icon={<TbReport />} onClick={() => {h_ReportAllOpen(e.id)}}  />
-                                <ButtonCrud name=" ویرایش   " icon={ <FaRegEdit />}  onClick={() => { clickOpenEdit(e.id); setEditState({ title: e.title, schoolName: e.schoolName, schoolId: e.schoolId }) }}  />
-                                <ButtonCrud name=" حذف   " icon={<MdDeleteForever />}  onClick={() => handleClickOpen(e.id)} />
+                                <BasicPopover >
+                                  <div className="p-1 d-flex flex-column justify-content-around rtl">
+                                    <ButtonCrud name="  گزارش کارنامه دبیر " icon={<TbReport />} onClick={() => { h_ReportAllOpen(e.id) }} classNameBtn="w-120px" />
+                                    <Spacer sp="my-1" />
+                                    <ButtonCrud name={ " گزارش مدیریت   دانش آموز  "} icon={<TbReport />} classNameBtn="w-120px"
+                                     onClick={() => { h_openMangeStudent(e.id) }} />
+                                    <Spacer sp="my-1" />
+                                    <ButtonCrud name=" ویرایش   " icon={<FaRegEdit />} onClick={() => { clickOpenEdit(e.id); setEditState({ title: e.title, schoolName: e.schoolName, schoolId: e.schoolId }) }} />
+                                    <Spacer sp="my-1" />
+                                    <ButtonCrud name=" حذف   " icon={<MdDeleteForever />} onClick={() => handleClickOpen(e.id)} />
+                                  </div>
+                                </BasicPopover>
                               </td>
                             </tr>
                           );

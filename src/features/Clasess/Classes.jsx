@@ -9,7 +9,8 @@ import TableClasses from "./components/TableClasses";
 import { useModalV2 } from "@hooks/crudModal/useModalV2";
 import { ConfigClass } from '@core/typeCrud';
 import useFilePdfStudentAll from "@hooks/Report/useFilePdfStudents";
-import ReportClass from "./components/ReportClass";
+import ReportClass from "./Reports/ReportClass";
+import ReportManageStudent from "./Reports/ReportManageStudent";
 const config = ConfigClass;
 
 function Classes() {
@@ -19,30 +20,33 @@ function Classes() {
   const [DeleteBaseAndFeild] = useDeleteData(config.del, config.api, config.get)
   const [openDelete, hOpenClickDelModal, hCloseDelModal, confirmDelModal] = useModal(handelCofrimDeleteModal);
 
-
-
   //* configuration Add item 
   const handelCofrimCreate = data => CreateBaseAndFeild(data)
   const [CreateBaseAndFeild] = usePostData(config.create, config.api, config.get)
   const [openCreate, hOpenClickCreateModal, hCloseCreateModal, confirmCreateModal] = useModal(handelCofrimCreate);
-
-
 
   //* configuration Edit item 
   const handelCofrimEdit = data => EditBaseAndFeild(data)
   const [EditBaseAndFeild] = usePutData(config.edit, config.api, config.get)
   const [openEdit, clickOpenEdit, closeEditMobile, confirmEditModal] = useModal(handelCofrimEdit);
 
+
   //* Report Thchers at clases
   const handelReportStudentAll = data => ExportPdfAll({classRomeId: +data.id ,testId: +data.testId ,lessonId: +data.lessonId  })
   const [ExportPdfAll] = useFilePdfStudentAll("Report/printTeacher", "ReportCard_Get_Modal_Class_All")
   const [h_ReportAll, ModalReportAll] = useModalV2({ confirm: " گزارش ", head: "  گزارش کارنامه دبیر   " }, handelReportStudentAll);
 
+  //* Report Thchers at clases
+  const handelReportManagmentStudent = data => ExportPdfManageStudent({classRomeId: +data.id ,testId: +data.testId  })
+  const [ExportPdfManageStudent] = useFilePdfStudentAll("Report/printManagementStudent", "ReportCard_Get_ManageStudent")
+  const [h_ReportManageStudent, ModalReportManageStudent] = useModalV2({ confirm: " گزارش ", head: "  گزارش  مدیریت دانش آموز   " }, handelReportManagmentStudent);
+
 
   return (
     <>
       {/* preview data on table  */}
-      <TableClasses handleClickOpen={hOpenClickDelModal} openCreateModal={hOpenClickCreateModal} clickOpenEdit={clickOpenEdit}  h_ReportAllOpen={h_ReportAll.open}/>
+      <TableClasses handleClickOpen={hOpenClickDelModal} openCreateModal={hOpenClickCreateModal} clickOpenEdit={clickOpenEdit}
+        h_ReportAllOpen={h_ReportAll.open} h_openMangeStudent={h_ReportManageStudent.open}/>
 
       {/* delete modal  */}
       <Modal open={openDelete} handleClose={hCloseDelModal} confirm={confirmDelModal} contents={{ confirm: "حذف", head: "  حذف کلاس " }}>
@@ -62,6 +66,10 @@ function Classes() {
       <ModalReportAll>
         <ReportClass  confirmPdf={h_ReportAll.confirm} closePdf={h_ReportAll.close}  />
       </ModalReportAll>
+
+      <ModalReportManageStudent >
+        <ReportManageStudent  confirmPdf={h_ReportManageStudent.confirm} closePdf={h_ReportManageStudent.close}/>
+      </ModalReportManageStudent>
     </>
   );
 }
