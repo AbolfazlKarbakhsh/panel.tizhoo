@@ -4,11 +4,12 @@ import { useModal } from "@hooks/crudModal/useModal";
 import { usePostData } from "@hooks/usePosrData";
 import { useDeleteData } from "@hooks/useDeleteData";
 import { usePutData } from "@hooks/usePutData";
+import { useModalV2 } from "@hooks/crudModal/useModalV2";
+import useFileExcelStudentAll from "@hooks/Report/useFileExcelStudents";
+import useFilePdfStudentAll from "@hooks/Report/useFilePdfStudents";
 import CreateAcademys from "./components/createAcademys";
 import TableAcademys from "./components/TableAcademys";
-import { useModalV2 } from "@hooks/crudModal/useModalV2";
-import ReportManageTecher from "./Reports/ReportManageTecher";
-import useFilePdfStudentAll from "@hooks/Report/useFilePdfStudents";
+import Report from "@components/report/report";
 
 
 
@@ -37,10 +38,14 @@ function Academys() {
   const [EditBaseAndFeild] = usePutData("school_Edit", "school", "school_Get")
   const [openEdit, clickOpenEdit, closeEditMobile, confirmEditModal] = useModal(handelCofrimEdit);
 
-  
+
   //* configuration Pdf a student  
-  const handelReportStudent = data => ExportPdf({ schoolId: +data.id, testId: +data.testId })
-  const [ExportPdf] = useFilePdfStudentAll("Report/printManagementTeacher", "ReportCard_Get_Modal_ManageMentTecher")
+  const handelReportStudent =  data => {
+    const params = { schoolId: +data.id, testId: +data.testId }
+    data.ReportType == 0 ? ExportExcel(params) : ExportPdf(params)
+  }
+  const [ExportPdf] = useFilePdfStudentAll("Report/printManagementTeacher", "ReportCard_Get_Modal_ManageMentTecher_pdf")
+  const [ExportExcel] = useFileExcelStudentAll("Report/printManagementTeacherExcel", "ReportCard_Get_Modal_ManageMentTecher_excel")
   const [h_Report, ModalReport] = useModalV2({ confirm: " گزارش ", head: "  گزارش مدیر  " }, handelReportStudent);
 
 
@@ -64,10 +69,10 @@ function Academys() {
         <CreateAcademys confirm={confirmEditModal} handleClose={closeEditMobile} />
       </Modal>
 
-      
+
       {/*Export Pdf Student modal*/}
       <ModalReport>
-        <ReportManageTecher confirmPdf={h_Report.confirm} closePdf={h_Report.close} />
+        <Report confirmPdf={h_Report.confirm} closePdf={h_Report.close} />
       </ModalReport>
     </>
   );

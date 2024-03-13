@@ -24,7 +24,7 @@ const client = new QueryClient({
 function App() {
 
   return (
-    <>
+    < >
       <QueryClientProvider client={client}>
         <ToastContainer rtl />
         <RouterProvider router={router} />

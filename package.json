@@ -19,6 +19,7 @@
     "axios": "^1.6.7",
     "core-js": "^3.36.0",
     "file-saver": "^2.0.5",
+    "node-sass": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.50.1",

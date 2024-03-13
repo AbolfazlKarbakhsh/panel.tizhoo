@@ -12,7 +12,8 @@ import useStudentData from "@store/pishro/student/studentStore";
 import TableStudents from "./components/TableStudents";
 import CreateStudents from "./components/createStudents";
 import SortEngine from "./components/SortEngine";
-import ReportStudent from "./components/Reports/ReportStudent";
+import useFileExcelStudentAll from "@hooks/Report/useFileExcelStudents";
+import Report from "@components/report/report";
 const config = ConfigStudents;
 
 
@@ -36,20 +37,28 @@ function Students() {
 
 
   //* configuration Pdf a student  
-  const handelReportStudent = data => ExportPdf({ userId: data.id, testId: data.testId })
-  const [ExportPdf] = useFilePdfStudent("ReportCard/printReportCard", "ReportCard_Get_Modal_studnent")
+  const handelReportStudent = data => {
+    const params = { userId: data.id, testId: data.testId }
+    data.ReportType == 0 ? ExportExcel(params) : ExportPdf(params)
+  }
+  const [ExportPdf] = useFilePdfStudent("ReportCard/printReportCard", "ReportCard_Get_Modal_studnent_pdf")
+  const [ExportExcel] = useFileExcelStudentAll("ReportCard/printReportCardExcel", "ReportCard_Get_Modal_studnent_excel")
   const [h_Report, ModalReport] = useModalV2({ confirm: " گزارش ", head: "  گزارش کارنامه  " }, handelReportStudent);
 
+
   //* configuration Pdf fOR All Students  
-  const handelReportStudentAll = dataS => ExportPdfAll({ usersId: DataStudent, testId: +dataS.testId })
-  const [ExportPdfAll] = useFilePdfStudentAll("ReportCard/printReportCardGroup", "ReportCard_Get_Modal_studnent_All")
+  const handelReportStudentAll = data => {
+    const params = { usersId: DataStudent, testId: +data.testId }
+    data.ReportType == 0 ? ExportExcelAll(params) : ExportPdfAll(params)
+  }
+  const [ExportPdfAll] = useFilePdfStudentAll("ReportCard/printReportCardGroup", "ReportCard_Get_Modal_studnent_All_pdf")
+  const [ExportExcelAll] = useFileExcelStudentAll("ReportCard/printReportCardGroupExcel", "ReportCard_Get_Modal_studnent_All_excel")
   const [h_ReportAll, ModalReportAll] = useModalV2({ confirm: " گزارش ", head: "  گزارش کارنامه گروهی   " }, handelReportStudentAll);
 
 
-  
+
   return (
     <>
-      {/* 3-8-20 */}
       {/* sort Students  */}
       <SortEngine h_ReportAll={h_ReportAll.open} />
 
@@ -74,12 +83,12 @@ function Students() {
 
       {/*Export Pdf Student modal*/}
       <ModalReport>
-        <ReportStudent confirmPdf={h_Report.confirm} closePdf={h_Report.close} />
+        <Report confirmPdf={h_Report.confirm} closePdf={h_Report.close} />
       </ModalReport>
 
       {/*Export All Pdf Student modal*/}
       <ModalReportAll>
-        <ReportStudent confirmPdf={h_ReportAll.confirm} closePdf={h_ReportAll.close} />
+        <Report confirmPdf={h_ReportAll.confirm} closePdf={h_ReportAll.close} />
       </ModalReportAll>
 
     </>

@@ -9,11 +9,13 @@ import TableClasses from "./components/TableClasses";
 import { useModalV2 } from "@hooks/crudModal/useModalV2";
 import { ConfigClass } from '@core/typeCrud';
 import useFilePdfStudentAll from "@hooks/Report/useFilePdfStudents";
+import Report from "@components/report/report";
+import useFileExcelStudentAll from "@hooks/Report/useFileExcelStudents";
 import ReportClass from "./Reports/ReportClass";
-import ReportManageStudent from "./Reports/ReportManageStudent";
 const config = ConfigClass;
 
 function Classes() {
+
 
   //* configuration delete item 
   const handelCofrimDeleteModal = data => DeleteBaseAndFeild(data)
@@ -31,14 +33,24 @@ function Classes() {
   const [openEdit, clickOpenEdit, closeEditMobile, confirmEditModal] = useModal(handelCofrimEdit);
 
 
-  //* Report Thchers at clases
-  const handelReportStudentAll = data => ExportPdfAll({classRomeId: +data.id ,testId: +data.testId ,lessonId: +data.lessonId  })
+  //* Report techear at clases
+  const handelReportStudentAll = data => {
+    const params = { classRomeId: +data.id, testId: +data.testId, lessonId: +data.lessonId }
+    data.ReportType == 0 ? ExportExcelAll(params) : ExportPdfAll(params)
+  }
   const [ExportPdfAll] = useFilePdfStudentAll("Report/printTeacher", "ReportCard_Get_Modal_Class_All")
+  const [ExportExcelAll] = useFileExcelStudentAll("Report/printTeacherExcel", "ReportCard_Get_Modal_Class_Excel")
   const [h_ReportAll, ModalReportAll] = useModalV2({ confirm: " گزارش ", head: "  گزارش کارنامه دبیر   " }, handelReportStudentAll);
 
-  //* Report Thchers at clases
-  const handelReportManagmentStudent = data => ExportPdfManageStudent({classRomeId: +data.id ,testId: +data.testId  })
-  const [ExportPdfManageStudent] = useFilePdfStudentAll("Report/printManagementStudent", "ReportCard_Get_ManageStudent")
+
+
+  //* Report managment student at clases
+  const handelReportManagmentStudent = data => {
+    const params = { classRomeId: +data.id, testId: +data.testId }
+    data.ReportType == 0 ? ExportExcelManageStudent(params) : ExportPdfManageStudent(params)
+  }
+  const [ExportPdfManageStudent] = useFilePdfStudentAll("Report/printManagementStudent", "ReportCard_Get_ManageStudent_pdf")
+  const [ExportExcelManageStudent] = useFileExcelStudentAll("Report/printManagementStudentExcel", "ReportCard_Get_ManageStudent_Excel")
   const [h_ReportManageStudent, ModalReportManageStudent] = useModalV2({ confirm: " گزارش ", head: "  گزارش  مدیریت دانش آموز   " }, handelReportManagmentStudent);
 
 
@@ -46,7 +58,7 @@ function Classes() {
     <>
       {/* preview data on table  */}
       <TableClasses handleClickOpen={hOpenClickDelModal} openCreateModal={hOpenClickCreateModal} clickOpenEdit={clickOpenEdit}
-        h_ReportAllOpen={h_ReportAll.open} h_openMangeStudent={h_ReportManageStudent.open}/>
+        h_ReportAllOpen={h_ReportAll.open} h_openMangeStudent={h_ReportManageStudent.open} />
 
       {/* delete modal  */}
       <Modal open={openDelete} handleClose={hCloseDelModal} confirm={confirmDelModal} contents={{ confirm: "حذف", head: "  حذف کلاس " }}>
@@ -64,11 +76,11 @@ function Classes() {
       </Modal>
 
       <ModalReportAll>
-        <ReportClass  confirmPdf={h_ReportAll.confirm} closePdf={h_ReportAll.close}  />
+        <ReportClass confirmPdf={h_ReportAll.confirm} closePdf={h_ReportAll.close} />
       </ModalReportAll>
 
       <ModalReportManageStudent >
-        <ReportManageStudent  confirmPdf={h_ReportManageStudent.confirm} closePdf={h_ReportManageStudent.close}/>
+        <Report confirmPdf={h_ReportManageStudent.confirm} closePdf={h_ReportManageStudent.close} />
       </ModalReportManageStudent>
     </>
   );
