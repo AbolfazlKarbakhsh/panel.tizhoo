@@ -10,7 +10,7 @@ import ButtonCrud from "@components/table/ButtonCrud";
 import { TbReport } from "react-icons/tb";
 
 
-function TableAcademys({ handleClickOpen, openCreateModal, clickOpenEdit , openReportMGTecher }) {
+function TableAcademys({ handleClickOpen, openCreateModal, clickOpenEdit, openReportMGTecher }) {
   const { setEditState } = useAppContext()
   // cofiguration get item 
   const [pageParam, setPageParam] = useState(1);
@@ -23,6 +23,9 @@ function TableAcademys({ handleClickOpen, openCreateModal, clickOpenEdit , openR
   const handelChangePaginaite = (e, index) => {
     setPageParam(index);
   };
+  const returnParams = (e) => {
+    return { title: e.title, provinceId: e.provinceId , cityId : e.cityId , id : e.id }
+  }
   return (
     <>
       {BafPending && <Loader />}
@@ -41,6 +44,8 @@ function TableAcademys({ handleClickOpen, openCreateModal, clickOpenEdit , openR
                         <th scope="col">#</th>
                         <th scope="col">Id</th>
                         <th scope="col"> نام آموزشگاه </th>
+                        <th scope="col"> استان  </th>
+                        <th scope="col"> شهرستان  </th>
                         <th scope="col">عملیات </th>
                       </tr>
                     </thead>
@@ -52,9 +57,11 @@ function TableAcademys({ handleClickOpen, openCreateModal, clickOpenEdit , openR
                               <td scope="row">{i + 1}</td>
                               <td> {e.id} </td>
                               <td> {e.title} </td>
+                              <td> {e.provinceName} </td>
+                              <td> {e.cityName} </td>
                               <td className="d-flex justify-content-center">
-                                <ButtonCrud name="گزارش مدیر" icon={<TbReport />} onClick={() => {openReportMGTecher( e.id)} } />
-                                <ButtonCrud name="ویرایش" icon={<FaRegEdit />} onClick={() => { clickOpenEdit(e.id); setEditState(e.title) }} />
+                                <ButtonCrud name="گزارش مدیر" icon={<TbReport />} onClick={() => { openReportMGTecher(e.id) }} />
+                                <ButtonCrud name="ویرایش" icon={<FaRegEdit />} onClick={() => { clickOpenEdit(e.id); setEditState(returnParams(e)) }} />
                                 <ButtonCrud name="حذف " icon={<MdDeleteForever />} onClick={() => handleClickOpen(e.id)} />
                               </td>
                             </tr>
