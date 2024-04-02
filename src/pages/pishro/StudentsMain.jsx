@@ -9,8 +9,6 @@ function StudentsMain() {
   useGetData("baseAndField/SelectList", "baseAndField_Get_Modal_studnet");
   // get school
   useGetData("school/SelectList", "school_Get_Modal_studnet");
-  // get class
-  useGetData("ClassRome/SelectList", "class_Get_Modal_studnet");
   // get city
   useGetData("CityProvince/province", "CityProvince_Get_Modal_studnet");
   // get Test Select List

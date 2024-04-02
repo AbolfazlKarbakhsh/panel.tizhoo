@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import InputWithLabel from "@components/forms/input";
 import SelectBox from '@components/forms/SelectBox';
 import Spacer from '@components/global/spacer';
@@ -6,28 +6,52 @@ import ErrorText from '@components/forms/errorText';
 import { useForm } from 'react-hook-form';
 import { useAppContext } from "@context/AppContext";
 import { useQueryClient } from '@tanstack/react-query';
-import useGetDataParams from '@hooks/useGetDataParams';
 import LineColor from '@components/global/lineColor';
+import useGetDataParams from '@hooks/useGetDataParams';
+import { useStudentAcademyData } from '@store/pishro/student/studentStore';
 
 
 const CreateStudents = ({ confirm, handleClose, BtnConfirm, stateCrud }) => {
 
-  
-
-    const client = useQueryClient()
     const { register, handleSubmit, formState: { errors }, watch } = useForm()
-    const { editState } = useAppContext()
-    const province = watch("provinceId")
+    
 
-    const [citysData] = useGetDataParams(
-        [{ paramUrl: 'provinceId', paramKey: (province != undefined && province != '') ? province : editState.provinceId }],
-        "CityProvince/city",
-        "City_Get_Modal_studnent"
-    )
+    // edit modal sefualt values
+    const { editState } = useAppContext()
+    const client = useQueryClient()
+
+
+    // modal before data and Save
+    const { school, classStudent } = useStudentAcademyData(state => state.data);
+    const { changeSchool, changeClass } = useStudentAcademyData(state => state.actions);
+    useEffect(() => {
+        (watch("schoolId") != "") && changeSchool(watch("schoolId"));
+        (watch("classId") != "") && changeClass(watch("classId"));
+    }, [watch("schoolId"), watch("classId")]);
+
+
+
+    // submit and save  form in server
+    const saveBtn = useRef()
     const HandelCofirm = (data) => {
-        confirm(data)
-        handleClose()
+        confirm(data);
+        editState.length == undefined && handleClose();
     }
+    document.addEventListener("keyup" , (e) => {
+        if( e.ctrlKey && e.key === "q" ) {
+           saveBtn.current.click()
+        }
+    })
+
+
+    // classes get data 
+    const schoolParm = watch("schoolId")
+
+    const [ClasesData] = useGetDataParams(
+        [{ paramUrl: 'schoolId', paramKey: (schoolParm != undefined && schoolParm != '') ? schoolParm : (editState.schoolId || school) }],
+        "ClassRome/SelectList",
+        "schoolParm_Get_Modal_studnent"
+    )
 
 
     return (
@@ -113,23 +137,11 @@ const CreateStudents = ({ confirm, handleClose, BtnConfirm, stateCrud }) => {
                     autoComplete='off'
                     validation={register('schoolId', { required: "لطفا یک مقدار انتخاب کنید", })}
                     loop={client.getQueryData(['school_Get_Modal_studnet']) || []}
-                    selectedItem={editState.schoolId || '10'}
+                    selectedItem={editState.schoolId || school}
                 />
                 {errors.schoolId && <ErrorText value="لطفا یک مقدار انتخاب  کنید" />}
                 <Spacer />
 
-
-                <SelectBox
-                    label=" پایه و رشته   "
-                    labelclass="Input-Label-top text-muted font-sm-2"
-                    inputclass="font-sm-3  my-3 py-4-5"
-                    autoComplete='off'
-                    validation={register('baseAndField', { required: "لطفا یک مقدار انتخاب کنید", })}
-                    loop={client.getQueryData(['baseAndField_Get_Modal_studnet']) || []}
-                    selectedItem={editState.baseAndField || ''}
-                />
-                {errors.baseAndField && <ErrorText value="لطفا یک مقدار انتخاب  کنید" />}
-                <Spacer />
 
                 <SelectBox
                     label=" کلاس "
@@ -137,44 +149,13 @@ const CreateStudents = ({ confirm, handleClose, BtnConfirm, stateCrud }) => {
                     inputclass="font-sm-3  my-3 py-4-5"
                     autoComplete='off'
                     validation={register('classId', { required: "لطفا یک مقدار انتخاب کنید", })}
-                    loop={client.getQueryData(['class_Get_Modal_studnet']) || []}
-                    selectedItem={editState.classId || ''}
+                    loop={ ClasesData || []}
+                    selectedItem={editState.classId || classStudent}
                 />
                 {errors.classId && <ErrorText value="لطفا یک مقدار انتخاب  کنید" />}
                 <Spacer />
 
 
-                <SelectBox
-                    label=" استان "
-                    labelclass="Input-Label-top text-muted font-sm-2"
-                    inputclass="font-sm-3 "
-                    autoComplete='off'
-                    validation={register('provinceId', { required: "لطفا یک مقدار انتخاب کنید", })}
-                    loop={client.getQueryData(['CityProvince_Get_Modal_studnet']) || []}
-                    selectedItem={editState.provinceId || '16'}
-                    Api="name"
-                />
-                {errors.provinceId && <ErrorText value="لطفا یک مقدار انتخاب  کنید" />}
-                <Spacer />
-
-
-                {
-                    (citysData) ? (<>
-                        <SelectBox
-                            label=" شهرستان "
-                            labelclass="Input-Label-top text-muted font-sm-2"
-                            inputclass="font-sm-3  my-3 py-4-5"
-                            autoComplete='off'
-                            validation={register('cityId', { required: "لطفا یک مقدار انتخاب کنید", })}
-                            loop={citysData || []}
-                            selectedItem={editState.cityId || '654'}
-                            Api="name"
-                        />
-                        {errors.cityId && <ErrorText value="لطفا یک مقدار انتخاب  کنید" />}
-                        <Spacer />
-
-                    </>) : ''
-                }
 
                 {
                     stateCrud == "add" && (
@@ -216,10 +197,10 @@ const CreateStudents = ({ confirm, handleClose, BtnConfirm, stateCrud }) => {
 
             <dir className="d-flex justify-content-end">
                 <div className="btn btn-secondary font-sm-2 font-md-3 " style={{ fontWeight: "200" }} onClick={handleClose}>
-                    انصراف
+                    بستن
                 </div>
-                <button className="btn btn-brand mx-2 font-sm-2 font-md-3 " style={{ fontWeight: "200" }} type='submit'>
-                    {BtnConfirm}
+                <button className="btn btn-brand mx-2 font-sm-2 font-md-3 " style={{ fontWeight: "200" }} type='submit' ref={saveBtn}>
+                    {BtnConfirm}   ( <code className='text-white'>ctrl + q</code>)
                 </button>
             </dir>
         </form>

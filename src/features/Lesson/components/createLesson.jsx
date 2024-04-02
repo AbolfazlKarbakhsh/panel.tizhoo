@@ -44,6 +44,9 @@ const CreateLesson = ({ confirm, handleClose , BtnConfirm }) => {
                  {errors.baseAndFieldId && <ErrorText value="لطفا یک مقدار وارد کنید" />}
                 <Spacer />
 
+                
+       
+
             </div>
 
             <dir className="d-flex justify-content-end">

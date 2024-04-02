@@ -46,6 +46,18 @@ const CreateClasses = ({ confirm, handleClose , BtnConfirm}) => {
                  {errors.schoolId && <ErrorText value="لطفا یک مقدار وارد کنید" />}
                 <Spacer />
 
+                <SelectBox
+                    label=" پایه و رشته   "
+                    labelclass="Input-Label-top text-muted font-sm-2"
+                    inputclass="font-sm-3  my-3 py-4-5"
+                    autoComplete='off'
+                    validation={register('baseAndFieldId', { required: "لطفا یک مقدار انتخاب کنید" , })}
+                    loop={client.getQueryData(['baseAndField_Get_Modal_Class']) || ''}
+                    selectedItem={editState.baseAndFieldId || ''}
+                />
+                 {errors.baseAndFieldId && <ErrorText value="لطفا یک مقدار وارد کنید" />}
+                <Spacer />
+
             </div>
 
             <dir className="d-flex justify-content-end">

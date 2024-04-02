@@ -7,6 +7,7 @@ const SelectBox = ({ label, id, inputclass = '', labelclass = '', validation = {
                 label && (<label className={`form-label  ${labelclass}`} htmlFor={id}>{label}</label>)
             }
             <select
+                data-live-search="true"
                 className={`form-control form-control-lg  Fvazir  ${inputclass}`}
                 id={id}
                 {...validation}
@@ -14,9 +15,9 @@ const SelectBox = ({ label, id, inputclass = '', labelclass = '', validation = {
                 defaultValue={selectedItem || ""}
             >
                 {
-                !NoChoise ? <option value="" className='Fvazir  ' disabled> انتخاب کنید</option> : 
-                 <option value="0" className='Fvazir ' >   هیچکدام  </option>
-            }
+                    !NoChoise ? <option value="" className='Fvazir  ' disabled> انتخاب کنید</option> :
+                        <option value="0" className='Fvazir ' >   هیچکدام  </option>
+                }
                 {loop.map((e) => {
                     return (
                         <option value={e.id} className='Fvazir' key={e.id}>  {Api == "name" ? e.name : e.title}</option>
@@ -28,4 +29,3 @@ const SelectBox = ({ label, id, inputclass = '', labelclass = '', validation = {
 }
 
 export default SelectBox;
- 

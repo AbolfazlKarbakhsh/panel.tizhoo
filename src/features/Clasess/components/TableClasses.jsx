@@ -50,6 +50,7 @@ function TableClasses({ handleClickOpen, openCreateModal, clickOpenEdit, h_Repor
                         <th scope="col">Id</th>
                         <th scope="col"> نام کلاس </th>
                         <th scope="col"> نام آموزشگاه </th>
+                        <th scope="col"> پایه و رشته  </th>
                         <th scope="col">عملیات </th>
                       </tr>
                     </thead>
@@ -62,6 +63,7 @@ function TableClasses({ handleClickOpen, openCreateModal, clickOpenEdit, h_Repor
                               <td scope="row">{e.id}</td>
                               <td> {e.title} </td>
                               <td> {e.schoolName} </td>
+                              <td> {e.baseAndFieldTitle} </td>
                               <td className="d-flex justify-content-center">
                                 <BasicPopover >
                                   <div className="p-1 d-flex flex-column justify-content-around rtl">
@@ -70,7 +72,7 @@ function TableClasses({ handleClickOpen, openCreateModal, clickOpenEdit, h_Repor
                                     <ButtonCrud name={ " گزارش مدیریت   دانش آموز  "} icon={<TbReport />} classNameBtn="w-120px"
                                      onClick={() => { h_openMangeStudent(e.id) }} />
                                     <Spacer sp="my-1" />
-                                    <ButtonCrud name=" ویرایش   " icon={<FaRegEdit />} onClick={() => { clickOpenEdit(e.id); setEditState({ title: e.title, schoolName: e.schoolName, schoolId: e.schoolId }) }} />
+                                    <ButtonCrud name=" ویرایش   " icon={<FaRegEdit />} onClick={() => { clickOpenEdit(e.id); setEditState({ title: e.title, schoolName: e.schoolName, schoolId: e.schoolId , baseAndFieldId : e.baseAndFieldId  }) }} />
                                     <Spacer sp="my-1" />
                                     <ButtonCrud name=" حذف   " icon={<MdDeleteForever />} onClick={() => handleClickOpen(e.id)} />
                                   </div>

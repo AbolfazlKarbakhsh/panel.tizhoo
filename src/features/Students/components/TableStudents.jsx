@@ -80,8 +80,8 @@ function TableStudents({ handleClickOpen, openCreateModal, clickOpenEdit, clickO
                         <th scope="col"> نام خانوادگی   </th>
                         <th scope="col"> نام کاربری   </th>
                         <th scope="col"> تلفن    </th>
+                        <th scope="col">  کلاس   </th>
                         <th scope="col">  استان   </th>
-                        <th scope="col">  شهرستان   </th>
                         <th scope="col">   آموزشگاه    </th>
                         <th scope="col"> پایه و رشته     </th>
                         <th scope="col">عملیات </th>
@@ -99,8 +99,8 @@ function TableStudents({ handleClickOpen, openCreateModal, clickOpenEdit, clickO
                               <td> {e.lastName} </td>
                               <td> {e.userName} </td>
                               <td> {e.mobile} </td>
+                              <td> {e.classRome} </td>
                               <td> {e.province} </td>
-                              <td> {e.city} </td>
                               <td> {e.school} </td>
                               <td> {e.baseAndField} </td>
 

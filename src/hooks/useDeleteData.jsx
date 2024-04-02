@@ -5,7 +5,7 @@ import { toast } from "react-toastify"
 
 export const useDeleteData = (key , url , refKey  ) => {
     const client = useQueryClient()
-    const {mutate,  isPaused , isError , isPending} = useMutation({
+    const {mutate,  isPaused , isError } = useMutation({
         mutationKey: [key],
         mutationFn: async (id) => {
             const res = await httpsInterceptedService.delete(`${url}/${id}`)
