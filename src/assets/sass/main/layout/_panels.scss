@@ -5,7 +5,7 @@
     .header-aside-lg,
     .header-aside-lg h1 {
         background-color: $side-titr;
-        width: 120%;
+        width: 100%;
         padding: 4px 15px;
         display: flex;
         justify-content: center;
@@ -74,7 +74,7 @@
     flex-direction: row !important;
     align-content: center;
     padding-top: 10px;
-    padding-bottom: 20px;
+    // padding-bottom: 20px;
 
 }
 
@@ -88,7 +88,7 @@
 .gigamenu {
     overflow-y: auto;
     overflow-x: hidden;
-    height: 85vh;
+    height: 100vh;
 }
 
 .gigamenu::-webkit-scrollbar {
@@ -267,4 +267,18 @@ div .span-head {
 .sidebar-exit-posation{
     top: -13px;
     left: 12px;
+}
+
+.personal_details{
+    width: 100% !important;
+    position: absolute;
+    top: -0px;
+    left: 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+@media (max-width:992px){
+    .w-100-lg{
+        width: 100%;
+    }
 }

@@ -16,6 +16,9 @@ import TestCourseMain from "@pages/pishro/TestCourseMain";
 import ClassesMain from "@pages/pishro/ClassesMain";
 import StudentScoreMain from "@pages/pishro/student-score-main";
 import Page404 from "@pages/Page404";
+import Taechar from "@pages/paya/taechar";
+import Student from "@pages/paya/student";
+import UserMangment from "@pages/paya/UserMangment";
 
 const router = createBrowserRouter([
 
@@ -57,6 +60,21 @@ const router = createBrowserRouter([
                 element: <ClassesMain />,
                 errorElement: <ClassesMain />,
                 path: '/classes'
+            },
+            {
+                element: <Taechar />,
+                errorElement: <Taechar />,
+                path: '/Taechar'
+            },
+            {
+                element: <Student />,
+                errorElement: <Student />,
+                path: '/Student'
+            },
+            {
+                element: <UserMangment />,
+                errorElement: <UserMangment />,
+                path: '/UserMangment'
             },
         ]
     },
