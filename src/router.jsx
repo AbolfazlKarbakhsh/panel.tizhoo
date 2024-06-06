@@ -19,6 +19,7 @@ import Page404 from "@pages/Page404";
 import Taechar from "@pages/paya/taechar";
 import Student from "@pages/paya/student";
 import UserMangment from "@pages/paya/UserMangment";
+import TeachersManger from "@pages/paya/TeachersManger";
 
 const router = createBrowserRouter([
 
@@ -75,6 +76,11 @@ const router = createBrowserRouter([
                 element: <UserMangment />,
                 errorElement: <UserMangment />,
                 path: '/UserMangment'
+            },
+            {
+                element: <TeachersManger />,
+                errorElement: <TeachersManger />,
+                path: '/TeachersManger'
             },
         ]
     },

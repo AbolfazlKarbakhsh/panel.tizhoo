@@ -8,8 +8,8 @@ export const usePutData = (key , url , refKey) => {
     const {mutate,  isPaused} = useMutation({
         mutationKey: [key],
         mutationFn: async (data) => {
-            const res = await httpsInterceptedService.put(`${url}` , data )
-            return res
+            const res = await httpsInterceptedService.put(`${url}` , data );
+            return res;
         },onSuccess: () => {
             client.invalidateQueries({ queryKey: [refKey] });
             toast.success("  فیلد مورد نظر ویرایش  شد", {

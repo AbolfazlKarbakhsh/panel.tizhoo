@@ -1,7 +1,7 @@
 import { GiTeacher } from "react-icons/gi";
 import { BiNetworkChart } from "react-icons/bi";
 
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { PiStudentFill } from "react-icons/pi";
 import { PiNotebookDuotone } from "react-icons/pi";
 import { BsBuildings } from "react-icons/bs";
@@ -11,14 +11,14 @@ import { PiUsersThree } from "react-icons/pi";
 import { useAppContext } from "@context/AppContext";
 import { useQueryClient } from "@tanstack/react-query";
 import { Skeleton } from "@mui/material";
+import ButtonsMange from "./ButtonsMange";
 
 function ButtonsSidebar() {
   const location = useLocation().pathname;
   const { DrawerGigaMenu } = useAppContext();
   const classChecker = (e) => (location == e ? "text-white" : "ct-green-dark");
   const client = useQueryClient();
-  const roleId =
-    client.getQueryData(["UserManagement_CurrentUser_catch"]) || 10;
+  const roleId = client.getQueryData(["UserManagement_CurrentUser_catch"]) || 10;
 
   const skeleton = ["", "", "", "", "", ""];
   const SuperRole = [
@@ -79,10 +79,10 @@ function ButtonsSidebar() {
     switch (roleId.roleId || roleId) {
       // مدیر
       case 1:
-        return SuperRole;
+        return [];
       // سوپر یوزر
       case 3:
-        return SuperRole;
+        return [];
       // نماینده
       case 4:
         return userMange;
@@ -133,19 +133,22 @@ function ButtonsSidebar() {
           </NavLink>
         );
       })}
-      {ButtonPikker().length == 0 && (
-        <>
-          {skeleton.map((i) => (
-            <Skeleton
-              variant="rounded"
-              width={156.7}
-              height={40}
-              className="my-1"
-              sx={{ bgcolor: "grey.600" }}
-            />
-          ))}
-        </>
-      )}
+      {roleId?.roleId != 1 && roleId?.roleId != 3
+        ? ButtonPikker().length == 0 && (
+            <>
+              {skeleton.map((i, index) => (
+                <Skeleton
+                  key={index}
+                  variant="rounded"
+                  width={156.7}
+                  height={40}
+                  className="my-1"
+                  sx={{ bgcolor: "grey.600" }}
+                />
+              ))}
+            </>
+          )
+        : <ButtonsMange classChecker={classChecker} roleId={roleId} DrawerGigaMenu={DrawerGigaMenu} location={location} />}
     </>
   );
 }

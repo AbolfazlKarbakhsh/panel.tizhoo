@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import { httpsInterceptedService } from "@core/http-service"
+import axios from "axios"
 
 const useGetData = (url, key) => {
     const { data, isPending, isError } = useQuery({
