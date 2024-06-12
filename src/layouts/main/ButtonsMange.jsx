@@ -11,13 +11,6 @@ import BasicPopover from "@components/forms/Poppover";
 function ButtonsMange({ classChecker, roleId, DrawerGigaMenu, location }) {
   const SuperRole = [
     {
-      name: " نمایندگی ها ",
-      path: "/UserMangment",
-      icon: (
-        <BiNetworkChart className={`font9 ${classChecker("/UserMangment")}`} />
-      ),
-    },
-    {
       name: " دبیران ",
       path: "/TeachersManger",
       icon: (
@@ -29,7 +22,15 @@ function ButtonsMange({ classChecker, roleId, DrawerGigaMenu, location }) {
       path: "/",
       icon: <PiStudentFill className={`font9 ${classChecker("/")}`} />,
     },
-
+  ];
+  const namayandegi = [
+    {
+      name: " نمایندگی ها ",
+      path: "/UserMangment",
+      icon: (
+        <BiNetworkChart className={`font9 ${classChecker("/UserMangment")}`} />
+      ),
+    },
   ];
 
   const AzmonBtn = {
@@ -82,10 +83,9 @@ function ButtonsMange({ classChecker, roleId, DrawerGigaMenu, location }) {
         }`}
       />
     ),
-    name: " مدارس",
+    name: " مدیریت مدارس",
   };
   const AmozeshgahSubBtn = [
- 
     {
       name: "آموزشگاه ها ",
       path: "/academys",
@@ -121,6 +121,27 @@ function ButtonsMange({ classChecker, roleId, DrawerGigaMenu, location }) {
           ))}
         </div>
       </BasicPopover>
+      {roleId?.roleId && (
+        <>
+          {namayandegi.map((e, i) => {
+            return (
+              <NavLink
+                onClick={DrawerGigaMenu}
+                key={i}
+                to={e.path}
+                className={`btnRightNav d-flex align-items-center btn justify-content-around  IconSet ${
+                  location == e.path ? "activeBtn3" : "activeBtn"
+                } `}
+                role="button"
+                aria-pressed="false"
+              >
+                <span className="font2 items  w-100 mt-0 ">{e.name}</span>
+                {e.icon}
+              </NavLink>
+            );
+          })}
+        </>
+      )}
       <BasicPopover Button={AmozeshgahBtn}>
         <div
           className="p-2  d-flex flex-column justify-content-center  align-items-center"

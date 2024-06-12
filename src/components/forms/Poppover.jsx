@@ -4,7 +4,6 @@ import { FaUserGear } from "react-icons/fa6";
 
 export default function Poppover({ children, name, Button }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  console.log(Button);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

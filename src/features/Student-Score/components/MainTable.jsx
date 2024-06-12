@@ -8,6 +8,7 @@ import { MdDeleteForever } from "react-icons/md";
 import Table from "@components/table/Table";
 import { useAppContext } from "@context/AppContext";
 
+
 export function MainTable({
   openCreateModal,
   DataStudentScore,

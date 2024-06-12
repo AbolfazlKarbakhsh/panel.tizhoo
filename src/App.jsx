@@ -27,7 +27,7 @@ function App() {
       <QueryClientProvider client={client}>
         <ToastContainer rtl />
         <RouterProvider router={router} />
-        {/* <ReactQueryDevtools /> */}
+        <ReactQueryDevtools />
       </QueryClientProvider>
     </>
   )

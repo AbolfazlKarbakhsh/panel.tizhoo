@@ -55,9 +55,10 @@
     outline: none !important;
 }
 
-.w-120px{
-    width:120px;
+.w-120px {
+    width: 120px;
 }
+
 a {
     // all: unset;
     color: #272727 !important;
@@ -82,9 +83,9 @@ h6 {
     color: #495057;
 }
 
-.flex-th-center th *{
+.flex-th-center th * {
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
 }
 
 button:focus {
@@ -318,4 +319,25 @@ button:visited {
     .w-md-auto {
         width: 100% !important;
     }
+}
+
+.rdp__modal {
+    z-index: 100000 !important;
+}
+
+.zaman-config {
+    position: fixed;
+    z-index: 10000000;
+    margin-left: 20px !important;
+
+}
+.zaman-config div:nth-child(3){
+    right: -12px !important;
+}
+#demo-multiple-chip-label{
+    left:inherit !important;
+    right: 16px !important;
+}
+.css-hfutr2-MuiSvgIcon-root-MuiSelect-icon{
+    display: none !important;
 }

@@ -13,9 +13,12 @@ let ConfigLesson = new ConfigComponentsType("Lesson")
 let ConfigStudents = new ConfigComponentsType("Students")
 let ConfigStudentScore = new ConfigComponentsType("ReportCard")
 let ConfigTest = new ConfigComponentsType("Test")
+let ConfigRemove = new ConfigComponentsType("Test/Remove")
+let ConfigRestore = new ConfigComponentsType("Test/Restore")
+let UserManagement = new ConfigComponentsType("UserManagement")
 
 
 
-export {ConfigClass , ConfigLesson , ConfigStudents , ConfigTest , ConfigStudentScore}
+export {ConfigClass , ConfigLesson , ConfigStudents , ConfigTest , ConfigStudentScore , ConfigRemove , ConfigRestore , UserManagement}
 
 
