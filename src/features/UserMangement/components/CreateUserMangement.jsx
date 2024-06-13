@@ -150,7 +150,7 @@ const CreateUserMangement = ({ confirm, handleClose, BtnConfirm, stateCrud }) =>
                     بستن
                 </div>
                 <button className="btn btn-brand mx-2 font-sm-2 font-md-3 " style={{ fontWeight: "200" }} type='submit' ref={saveBtn}>
-                    {BtnConfirm}   ( <code className='text-white'>ctrl + q</code>)
+                    {BtnConfirm}  
                 </button>
             </dir>
         </form>

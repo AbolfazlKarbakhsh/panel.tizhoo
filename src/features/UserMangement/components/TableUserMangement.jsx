@@ -33,7 +33,7 @@ function TableUserMangement({
   const ParmsGetAllServiece = [
     { paramUrl: "page", paramKey: pageParam },
     { paramUrl: "pageSize", paramKey: SizeParam },
-    { paramUrl: "roleId", paramKey: roleId },
+    { paramUrl: "roleId", paramKey: 0 },
     { paramUrl: "userName", paramKey: dataParams.mobile },
     { paramUrl: "mobile", paramKey: dataParams.userName },
   ];

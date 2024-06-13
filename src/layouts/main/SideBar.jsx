@@ -29,7 +29,7 @@ function SideBar() {
             <PersnalDetails
               className="d-flex d-lg-none "
               semat={roleId.roleName}
-              name={roleId.firstName + roleId.lastName}
+              name={roleId.firstName  + " "  + roleId.lastName}
             />
           )}
         </div>
@@ -70,7 +70,7 @@ function SideBar() {
           <PersnalDetails
             className="d-lg-flex d-none "
             semat={roleId.roleName}
-            name={roleId.firstName + roleId.lastName}
+            name={roleId.firstName + " " + roleId.lastName}
           />
         ) : (
           <Skeleton

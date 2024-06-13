@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import Logo from '../../assets/images/Logo-green.png'
+import Logo from '@assets/images/Logo-green.png'
+import InputWithGroupLable from '@components/forms/InputWithGroupLable';
 import InputWithLabel from '@components/forms/input';
 import LineColor from '@components/global/lineColor';
 import Spacer from '@components/global/spacer';
@@ -56,7 +57,7 @@ const LoginMain = () => {
                         <Spacer sp="mt-4-5" />
 
 
-                        <InputWithLabel
+                        <InputWithGroupLable
                             label="گذرواژه  "
                             labelclass="Input-Label-top text-muted font-sm-2"
                             inputclass="font-sm-3 py-4-5 text-left-important"
